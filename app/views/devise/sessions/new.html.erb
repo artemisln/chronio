@@ -1,0 +1,33 @@
+<div class="w-full min-h-[100vh]">
+  <div class="max-w-xl w-full mx-auto shadow-lg bg-gray-200 rounded-lg py-8">
+    <h2 class="text-xl mb-4 text-center">Log in</h2>
+
+    <div class="w-3/4 mx-auto">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field mb-4">
+          <%= f.label :email, class: "mb-2 text-lg" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full rounded-lg bg-gray-50" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :password, class: "mb-2 text-lg" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded-lg bg-gray-50" %>
+        </div>
+        
+        <% if devise_mapping.rememberable? %>
+          <div class="field mb-4">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions w-full">
+          <%= f.submit "Log in", class: "bg-blue-500 w-full p-2 text-blue-100 rounded-lg cursor-pointer hover:bg-blue-700 hover:text-blue-300" %>
+        </div>
+      <% end %>
+      <div class="flex flex-col items-center mt-4 gap-4">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
