@@ -1,0 +1,24 @@
+<div id="<%= dom_id post %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Τίτλος:</strong>
+    <%= post.caption %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Περιεχόμενο:</strong>
+    <%= post.body %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Εικόνες:</strong>
+    <% post.images.each do |image| %>
+      <div><%= link_to image.filename, image %></div>
+    <% end %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Χρήστης:</strong>
+    <%= post.user_id %>
+  </p>
+
+</div>
