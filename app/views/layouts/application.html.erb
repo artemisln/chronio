@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <%= render "layouts/navbar" if current_user%>
     <%= render "layouts/alerts" %>
     <%= yield %>
   </body>

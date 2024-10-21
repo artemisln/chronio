@@ -2,9 +2,9 @@
     <%= image_tag(post.images.first, class: "w-full h-64 object-cover") if post.images.any? %>
     <div class="p-2">
         <p class="text-2xl font-semibold"><%= post.caption %></p>
-        <p class="text-xl"> <%= post.body&.body&.to_plain_text.first(50) %>...</p>
+        <p class="text-xl"> <%= post.feed_body %><%= "..." if post.feed_body_is_larger? %></p>
         <p class="text-md text-slate-700"> by <%= post.user.username %></p>
         <p class="text-sm text-slate-600"> posted <%= time_ago_in_words(post.created_at) %> ago </p>
 
-        </div>
+    </div>
 </div>
