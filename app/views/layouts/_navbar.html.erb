@@ -5,8 +5,8 @@
     
             <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
                 <p class="text-xl text-gray-100" data-action="click->dropdown#toggle"> <%= current_user.username %> </p>
-                <div class="absolute top-10 w-56 h-56 bg-gray-200 rounded-lg hidden" style="background-color: black;" data-dropdown-target="menu">
-                
+                <div class="absolute p-2 flex flex-col top-10 right-0 w-56 h-56 bg-gray-200 rounded-lg px-14 hidden" data-dropdown-target="menu">
+                    <%=link_to "Edit account", edit_user_registration_path, class: "text-xl text-gray-800" %>
                 </div>
             </div>
         
