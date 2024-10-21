@@ -1,0 +1,15 @@
+<div class="w-full bg-slate-900 h-16 sticky top-0">
+    <div class="max-w-7xl w-full h-full mx-auto flex items-center justify-between">
+        <%= link_to "Αρχική", "/", class: "text-xl bg-slate-900 text-gray-100" %>
+        <% if current_user %>
+    
+            <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
+                <p class="text-xl text-gray-100" data-action="click->dropdown#toggle"> <%= current_user.username %> </p>
+                <div class="absolute top-10 w-56 h-56 bg-gray-200 rounded-lg hidden" style="background-color: black;" data-dropdown-target="menu">
+                
+                </div>
+            </div>
+        
+        <% end %>
+    </div>
+</div>

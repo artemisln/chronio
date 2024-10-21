@@ -12,6 +12,11 @@
         </div>
 
         <div class="field mb-4">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, class: "w-full rounded-lg bg-gray-50" %>
+        </div>
+
+        <div class="field mb-4">
           <%= f.label :password, "Κωδικός", class: "mb-2 text-lg" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> τουλάχιστον χαρακτήρες)</em>
