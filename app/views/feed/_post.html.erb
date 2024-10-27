@@ -1,5 +1,5 @@
-<div class="min-h-96 w-full bg-gray-200 rounded-lg overflow-hidden relative"  data-controller="dropdown">
-    <%= image_tag(post.images.first, class: "w-full h-64 object-cover") if post.images.any? %>
+<div class="min-h-96 w-full bg-gray-200 rounded-lg relative">
+    <%= image_tag(post.images.first, class: "w-full h-64 object-cover rounded-lg") if post.images.any? %>
     <div class="p-2">
         <p class="text-2xl font-semibold"><%= post.caption %></p>
         <p class="text-xl"> <%= post.feed_body %><%= "..." if post.feed_body_is_larger? %></p>
@@ -7,16 +7,58 @@
         <p class="text-sm text-slate-600"> posted <%= time_ago_in_words(post.created_at) %> ago </p>
 
     </div>
+
+    <div data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
     
-    <div class="absolute bottom-4 right-4">
-       <%= link_to "#", data: { action: "dropdown#toggle" } do %>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 hover:scale-105">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-            </svg>
-        <% end %>
-    </div>
-    
-    <div class="z-10 absolute w-40 h-36 bg-slate-200 bg-opacity-100 bottom-16 right-0 border-2 border-gray-900 grid grid-cols-4 p-4 gap-2 rounded-lg" data-dropdown-target="menu">
-      Hiii
+        <div class="absolute bottom-4 right-4">
+            <div class="flex items-center gap-4">
+                <% if (heart_reactions = post.reactions.where(name: "heart")) && heart_reactions.any? %>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-red-500">
+                            <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                        </svg>
+                        <span> <%= heart_reactions.count %> </span>
+                    </div>
+                <% end %>
+
+                <% if (thumbs_up_reactions = post.reactions.where(name: "thumbs_up")) && thumbs_up_reactions.any? %>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-green-500">
+                            <path d="M7.493 18.5c-.425 0-.82-.236-.975-.632A7.48 7.48 0 0 1 6 15.125c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75A.75.75 0 0 1 15 2a2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23h-.777ZM2.331 10.727a11.969 11.969 0 0 0-.831 4.398 12 12 0 0 0 .52 3.507C2.28 19.482 3.105 20 3.994 20H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 0 1-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227Z" />
+                        </svg>
+                        <span> <%= thumbs_up_reactions.count %> </span>
+                    </div>
+                <% end %>
+
+                <% if (laughing_reactions = post.reactions.where(name: "laughing")) && laughing_reactions.any? %>
+                    <div class="flex items-center">
+                        <%=image_tag "laughing.png", class: "w-8 object-cover" %>
+                        <span> <%= laughing_reactions.count %> </span>
+                    </div>
+                <% end %>
+
+                <%= link_to "#", data: { action: "dropdown#toggle" } do %>
+                    <%= render "reaction", post: post, user: current_user %>
+                <% end %>
+            </div>
+        </div>
+        
+        <div class="hidden z-10 absolute w-40 h-36 bg-slate-200 bg-opacity-100 bottom-16 right-2 lg:-right-8 border-2 border-gray-900 grid grid-cols-4 p-4 gap-2 rounded-lg" data-dropdown-target="menu">
+            <%= link_to post_reactions_path(post, name: "heart"), data: { turbo_method: :post, action: "dropdown#close" } do %>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-red-500 hover:scale-105">
+                    <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                </svg>
+            <% end %>
+
+            <%= link_to post_reactions_path(post, name: "thumbs_up"), data: { turbo_method: :post, action: "dropdown#close" } do %>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-green-500 hover:scale-105">
+                    <path d="M7.493 18.5c-.425 0-.82-.236-.975-.632A7.48 7.48 0 0 1 6 15.125c0-1.75.599-3.358 1.602-4.634.151-.192.373-.309.6-.397.473-.183.89-.514 1.212-.924a9.042 9.042 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75A.75.75 0 0 1 15 2a2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23h-.777ZM2.331 10.727a11.969 11.969 0 0 0-.831 4.398 12 12 0 0 0 .52 3.507C2.28 19.482 3.105 20 3.994 20H4.9c.445 0 .72-.498.523-.898a8.963 8.963 0 0 1-.924-3.977c0-1.708.476-3.305 1.302-4.666.245-.403-.028-.959-.5-.959H4.25c-.832 0-1.612.453-1.918 1.227Z" />
+                </svg>
+            <% end %>
+
+            <%= link_to post_reactions_path(post, name: "laughing"), data: { turbo_method: :post, action: "dropdown#close" } do %>
+                <%=image_tag "laughing.png", class: "w-8 object-cover hover:scale-105" %>
+            <% end %>
+        </div>
     </div>
 </div>

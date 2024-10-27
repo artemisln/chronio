@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    scope module: :posts do
+      resources :reactions, only: [:create]
+    end
+  end
+
   devise_for :users
   # get "pages/home"
   get "pages/about"
