@@ -8,8 +8,8 @@ export default class extends Controller {
     console.log("Dropdown controller connected");
   }
 
-  toggle() {
-    // e.preventDefault()
+  toggle(event) {
+    event.preventDefault();
     this.menuTarget.classList.toggle("hidden");
   }
 
