@@ -27,5 +27,15 @@
 #       "yes": yup
 #       enabled: "ON"
 
+# English Translations
+
 en:
-  hello: "Hello world"
+  menu:
+    home: "Home"
+    edit_account: "Edit account"
+    sign_out: "Sign out"
+    language: "Language"
+    english: "English"
+    spanish: "Spanish"
+    greek: "Greek"
+

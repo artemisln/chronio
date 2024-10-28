@@ -1,27 +1,21 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="dropdown"
 export default class extends Controller {
-  static targets = ["menu"];
-
-  connect() {
-    console.log("Dropdown controller connected");
-  }
+  static targets = ["menu", "languageMenu"];
 
   toggle(event) {
-    event.preventDefault();
     this.menuTarget.classList.toggle("hidden");
   }
 
-  close(){
-    if (!this.menuTarget.classList.contains("hidden")){
-      this.menuTarget.classList.add("hidden");
-    }
+  toggleLanguage(event) {
+    event.stopPropagation();
+    this.languageMenuTarget.classList.toggle("hidden");
   }
 
-  closeUnlessDropdown(e){
-    if(!this.element.contains(e.target)){
-      this.close();
+  closeUnlessDropdown(event) {
+    if (!this.element.contains(event.target)) {
+      this.menuTarget.classList.add("hidden");
+      this.languageMenuTarget.classList.add("hidden");
     }
   }
 }

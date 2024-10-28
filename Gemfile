@@ -61,3 +61,6 @@ end
 gem "devise", "~> 4.9"
 
 gem "tailwind_devise", "~> 0.0.1"
+
+# Localization gem
+gem 'rails-i18n'

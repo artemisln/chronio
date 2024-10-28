@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .relative.mt-4:hover ul {
+    display: block;
+}

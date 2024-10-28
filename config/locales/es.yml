@@ -1,0 +1,11 @@
+# Spanish Translations
+
+es:
+  menu:
+    home: "Inicio"
+    edit_account: "Editar cuenta"
+    sign_out: "Cerrar sesión"
+    language: "Idioma"
+    english: "Inglés"
+    spanish: "Español"
+    greek: "Griego"
