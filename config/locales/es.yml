@@ -9,3 +9,11 @@ es:
     english: "Inglés"
     spanish: "Español"
     greek: "Griego"
+  feed:
+    new_post: "Nueva publicación!"
+    title: "Tu Feed"
+    description: "¡Mira todas las publicaciones recientes de tus amigos!"
+  links:
+    back_to_home: "Volver a Inicio"
+  post:
+    new_post: "Nueva publicación"

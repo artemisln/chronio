@@ -1,8 +1,8 @@
 <div class="w-full flex flex-col items-center py-24 px-4 min-h-screen bg-cover bg-top pb-24" style="background-image: url('<%= asset_path("sky.jpg") %>')">
-  <h1 class="font-bold text-4xl">Το feed σου</h1>
-  <p class="mt-4 text-xl">Δες όλες τις νέες δημοσιεύσεις των φίλων σου!</p>
+  <h1 class="font-bold text-4xl"><%= t('feed.title') %></h1>
+  <p class="mt-4 text-xl"><%= t('feed.description') %></p>
   <div class="max-w-2xl w-full flex flex-col items-center justify-center mx-auto mt-8">
-    <%= link_to "Νέα δημοσίευση!", new_post_path, class: "bg-black bg-opacity-70 text-white p-4 rounded-lg w-48 text-center hover:bg-opacity-90 transition duration-200" %>
+    <%= link_to t('feed.new_post'), new_post_path, class: "bg-black bg-opacity-70 text-white p-4 rounded-lg w-48 text-center hover:bg-opacity-90 transition duration-200" %>
   </div>
 
   <div class="max-w-2xl w-full grid gap-8 mt-8">
