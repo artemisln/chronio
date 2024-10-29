@@ -19,6 +19,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Ensure Brakeman is executable
+        run: chmod +x bin/brakeman
+
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
