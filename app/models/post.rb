@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :reactions
 
   def feed_body
-    # If there are images then only the first 100 characters show but if there are no images, first 400 ;) 
+    # If there are images then only the first 100 characters show but if there are no images, first 400 ;)
     char_limit = images.any? ? 100 : 400
     body&.body&.to_plain_text&.first(char_limit)
   end
@@ -15,5 +15,4 @@ class Post < ApplicationRecord
     feed_chars = feed_body&.chars&.count || 0
     start_chars > feed_chars
   end
-
 end

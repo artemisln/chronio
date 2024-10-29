@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|es|gr|fr/ do  # Add any additional supported language codes here
     resources :posts do
       scope module: :posts do
-        resources :reactions, only: [:create]
+        resources :reactions, only: [ :create ]
       end
     end
 
