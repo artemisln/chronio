@@ -78,6 +78,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set permissions for bin scripts
+        run: chmod +x bin/*
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
