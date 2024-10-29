@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
     devise_for :users
     # get "pages/home"
-    get "pages/about"
-    get "pages/tos"
-    get "pages/privacy-policy"
+    # get "pages/about"
+    # get "pages/tos"
+    # get "pages/privacy-policy"
 
     # Health check route
     get "up" => "rails/health#show", as: :rails_health_check

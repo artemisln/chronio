@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   def feed_body
     # If there are images then only the first 100 characters show but if there are no images, first 400 ;) 
     char_limit = images.any? ? 100 : 400
-    body&.body&.to_plain_text.first(char_limit)
+    body&.body&.to_plain_text&.first(char_limit)
   end
 
   def feed_body_is_larger?

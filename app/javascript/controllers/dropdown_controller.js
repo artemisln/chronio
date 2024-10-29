@@ -7,6 +7,12 @@ export default class extends Controller {
     this.menuTarget.classList.toggle("hidden");
   }
 
+  close() {
+    if (!this.menuTarget.classList.contains("hidden")) {
+      this.menuTarget.classList.add("hidden")
+    }
+  }
+
   toggleLanguage(event) {
     event.stopPropagation();
     this.languageMenuTarget.classList.toggle("hidden");
@@ -16,6 +22,7 @@ export default class extends Controller {
     if (!this.element.contains(event.target)) {
       this.menuTarget.classList.add("hidden");
       this.languageMenuTarget.classList.add("hidden");
+      this.close()
     }
   }
 }
