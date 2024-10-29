@@ -1,0 +1,10 @@
+# Greek Translations
+
+gr:
+  menu:
+    home: "Αρχική"
+    edit_account: "Επεξεργασία Λογαριασμού"
+    sign_out: "Αποσύνδεση"
+    language: "Γλώσσα"
+    english: "Αγγλικά"
+    spanish: "Ισπανικά"

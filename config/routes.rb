@@ -1,28 +1,29 @@
 Rails.application.routes.draw do
-  resources :posts do
-    scope module: :posts do
-      resources :reactions, only: [:create]
+  scope "(:locale)", locale: /en|es|gr|fr/ do  # Add any additional supported language codes here
+    resources :posts do
+      scope module: :posts do
+        resources :reactions, only: [:create]
+      end
     end
-  end
 
-  devise_for :users
-  # get "pages/home"
-  get "pages/about"
-  get "pages/tos"
-  get "pages/privacy-policy"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+    devise_for :users
+    # get "pages/home"
+    get "pages/about"
+    get "pages/tos"
+    get "pages/privacy-policy"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+    # Health check route
+    get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+    # PWA dynamic routes
+    get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+    get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  authenticated :user do
+    authenticated :user do
       root to: "feed#show", as: :authenticated_user_root
+    end
+
+    # Root path route ("/")
+    root "pages#home"
   end
-  # Defines the root path route ("/")
-  root "pages#home"
 end
