@@ -14,3 +14,9 @@ Style/StringLiterals:
 # Disable trailing whitespace enforcement
 Layout/TrailingWhitespace:
   Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
