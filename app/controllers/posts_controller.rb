@@ -13,7 +13,11 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = current_user.posts.new
+    if current_user
+      @post = current_user.posts.new
+    else
+      redirect_to login_path, alert: "You must be logged in to create a post."
+    end
   end
 
   # GET /posts/1/edit

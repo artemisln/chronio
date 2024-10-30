@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ["menu", "languageMenu"];
 
   toggle(event) {
+    event.stopPropagation();
+    event.preventDefault();
     this.menuTarget.classList.toggle("hidden");
   }
 
