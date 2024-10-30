@@ -2,8 +2,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_rich_text :body
   has_many_attached :images
-  has_many :reactions
-  has_many :comments
+  # Reactions and comments get deleted when the post is deleted
+  has_many :reactions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def feed_body
     # If there are images then only the first 100 characters show but if there are no images, first 400 ;)

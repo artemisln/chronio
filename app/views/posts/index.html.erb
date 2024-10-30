@@ -14,7 +14,7 @@
     <% @posts.each do |post| %>
       <%= render post %>
       <p>
-        <%= link_to "Show this post", post, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Show this post", post_path(post, locale: I18n.default_locale), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       </p>
     <% end %>
   </div>
