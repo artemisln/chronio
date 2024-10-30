@@ -9,6 +9,10 @@ es:
     english: "Inglés"
     spanish: "Español"
     greek: "Griego"
+    jobs: "Empleos"
+    network: "Red"
+    messages: "Mensajes"
+    profile: "Mí"
   feed:
     new_post: "Nueva publicación!"
     title: "Tu Feed"

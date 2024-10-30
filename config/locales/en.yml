@@ -38,6 +38,10 @@ en:
     english: "English"
     spanish: "Spanish"
     greek: "Greek"
+    jobs: "Jobs"
+    network: "Network"
+    messages: "Messages"
+    profile: "Me"
   feed:
     new_post: "New Post!"
     title: "Your Feed"

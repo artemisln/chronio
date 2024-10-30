@@ -1,14 +1,40 @@
 <div class="w-full bg-slate-900 h-16 sticky top-0 z-[999] px-4">
   <div class="max-w-7xl w-full h-full mx-auto flex items-center justify-between">
-    <%= link_to t('menu.home'), root_path(locale: I18n.locale), class: "text-xl bg-slate-900 text-gray-100" %>
+    
+    <!-- Home Button with Icon -->
+    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
+      <i class="fas fa-home text-xl mb-1"></i>
+      <span class="text-sm"><%= t('menu.home') %></span>
+    <% end %>    
+
+    <!-- Network Button with Icon -->
+    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
+      <i class="fas fa-user-friends text-xl mb-1"></i>
+      <span class="text-sm"><%= t('menu.network') %></span>
+    <% end %>
+
+    <!-- Jobs Button with Icon -->
+    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
+      <i class="fas fa-briefcase text-xl mb-1"></i>
+      <span class="text-sm"><%= t('menu.jobs') %></span>
+    <% end %>
+
+    <!-- Messages Button with Icon -->
+    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
+      <i class="fas fa-comment-dots text-xl mb-1"></i>
+      <span class="text-sm"><%= t('menu.messages') %></span>
+    <% end %>
+
+    <!-- Profile Button with Icon ("Me" Dropdown) -->
     <% if current_user %>
       <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
-        <!-- Show "Me" instead of the username -->
-        <p class="text-xl text-gray-100" data-action="click->dropdown#toggle">Me</p>
+      <p class="flex flex-col items-center text-gray-100 cursor-pointer" data-action="click->dropdown#toggle">
+        <i class="fas fa-user text-xl mb-1"></i>
+        <span class="text-sm"><%= t('menu.profile') %></span>
+      </p>
         
         <!-- Dropdown Menu -->
         <div class="absolute flex flex-col items-center top-10 right-0 w-56 bg-gray-200 rounded-lg p-4 text-center text-sm hidden" data-dropdown-target="menu">
-          <!-- Username at the top of the dropdown -->
           <p class="text-gray-800 font-bold mb-2"><%= current_user.username %></p>
           <hr class="w-full border-t border-gray-300 mb-2">
           
@@ -18,7 +44,6 @@
           <!-- Language Selection Dropdown with Hover -->
           <div class="relative mt-2 w-full">
             <button class="text-gray-800 mb-2"> <%= t('menu.language') %> </button>
-            <!-- Language dropdown menu, displayed on hover -->
             <ul class="absolute hidden right-0 mt-1 w-32 bg-gray-100 rounded-lg shadow-lg p-2 text-left group-hover:block">
               <% if I18n.locale != :en %>
                 <li><%= link_to t('menu.english'), locale: :en, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
@@ -32,7 +57,6 @@
             </ul>
           </div>
 
-          <!-- Sign Out Button at the Bottom -->
           <hr class="w-full border-t border-gray-300 my-2">
           <%= link_to t('menu.sign_out'), destroy_user_session_path, class: "p-2 w-full rounded-lg bg-gray-500 text-gray-50" %>
         </div>
