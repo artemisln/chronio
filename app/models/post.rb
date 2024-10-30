@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_rich_text :body
   has_many_attached :images
   has_many :reactions
+  has_many :comments
 
   def feed_body
     # If there are images then only the first 100 characters show but if there are no images, first 400 ;)

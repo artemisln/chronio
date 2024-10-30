@@ -1,0 +1,12 @@
+<div class="w-full flex flex-col items-center pt-24">
+    <div class="max-w-5xl w-full mx-auto">
+        <%= turbo_frame_tag @post, :comments do %>
+            <div class="flex flex-col gap-2">
+                <%= render partial: "comment", collection: @post.comments.order(created_at: :desc) %>
+            </div>
+            <div class="w-full flex justify-between items-center mt-4">
+                <%= link_to "Cancel", "/", class: "border-2 border-white bg-white bg-opacity-15 text-sm text-red p-2 rounded-lg w-52 text-center hover:scale-105"%>
+            </div>
+        <% end %>
+    </div>
+</div>
