@@ -8,3 +8,11 @@ gr:
     language: "Γλώσσα"
     english: "Αγγλικά"
     spanish: "Ισπανικά"
+  feed:
+    new_post: "Νέα δημοσίευση!"
+    title: "Το feed σου"
+    description: "Δες όλες τις νέες δημοσιεύσεις των φίλων σου!"
+  links:
+    back_to_home: "Πίσω στην αρχική"
+  post:
+    new_post: "Νέα δημοσίευση"

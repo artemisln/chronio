@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_current_user_post, only: %i[ edit update destroy ]
+  before_action :authenticate_user!  # Ensure the user is logged in
+  before_action :set_current_user_post, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
   def index
@@ -18,10 +19,6 @@ class PostsController < ApplicationController
     else
       redirect_to login_path, alert: "You must be logged in to create a post."
     end
-  end
-
-  # GET /posts/1/edit
-  def edit
   end
 
   # POST /posts or /posts.json
@@ -63,6 +60,7 @@ class PostsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_current_user_post
       @post = current_user.posts.find(params[:id])

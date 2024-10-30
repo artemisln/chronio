@@ -14,6 +14,6 @@
  *= require_self
  */
 
- .relative.mt-4:hover ul {
+[data-dropdown-target="menu"] .relative:hover .absolute {
     display: block;
 }

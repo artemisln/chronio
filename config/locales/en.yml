@@ -38,4 +38,11 @@ en:
     english: "English"
     spanish: "Spanish"
     greek: "Greek"
-
+  feed:
+    new_post: "New Post!"
+    title: "Your Feed"
+    description: "See all the latest posts from your friends!"
+  links:
+    back_to_home: "Back to Home"
+  post:
+    new_post: "New Post"
