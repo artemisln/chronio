@@ -20,3 +20,6 @@ Layout/TrailingEmptyLines:
 
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
