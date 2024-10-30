@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  caption: MyString
   user: one
+  body: "<p>This is the body of the first post.</p>"
 
 two:
-  caption: MyString
   user: two
+  body: "<p>This is the body of the second post.</p>"
