@@ -8,6 +8,10 @@ gr:
     language: "Γλώσσα"
     english: "Αγγλικά"
     spanish: "Ισπανικά"
+    jobs: "Εργασίες"
+    network: "Δίκτυο"
+    messages: "Μηνύματα"
+    profile: "Εγώ"
   feed:
     new_post: "Νέα δημοσίευση!"
     title: "Το feed σου"

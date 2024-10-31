@@ -65,3 +65,6 @@ gem "tailwind_devise", "~> 0.0.3"
 
 # Localization gem
 gem "rails-i18n"
+
+# Icons gem
+gem 'font-awesome-sass', '~> 5.15'

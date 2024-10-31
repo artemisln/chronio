@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     get "pages/about", to: "pages#about", as: :pages_about
     get "pages/tos", to: "pages#tos", as: :pages_tos
     get "pages/privacy-policy", to: "pages#privacy_policy", as: :pages_privacy_policy
+    get "pages/network", to: "pages#network", as: :network
+    get "pages/jobs", to: "pages#jobs", as: :jobs
+    get "pages/messages", to: "pages#messages", as: :messages
 
     # Health check route
     get "up" => "rails/health#show", as: :rails_health_check
