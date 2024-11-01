@@ -46,6 +46,11 @@
                     </div>
                 <% end %>
 
+                <!-- Show current reaction  -->
+                <%= link_to "#", data: { action: "dropdown#toggle" } do %>
+                    <%= render "reaction", post: post, user: current_user %>
+                <% end %>
+
             </div>
 
             <!-- Reaction Dropdown Menu -->

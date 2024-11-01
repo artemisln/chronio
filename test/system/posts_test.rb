@@ -2,19 +2,22 @@ require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
   setup do
+    @user = users(:one)
     @post = posts(:one)
   end
 
+
   test "visiting the index" do
     visit posts_url
-    assert_selector "h1", text: "Posts"
+    assert_selector ".post", text: @post.caption
   end
 
   test "should create post" do
-    visit posts_url
+    visit root_path
     click_on "New post"
 
     fill_in "Caption", with: @post.caption
+    fill_in "Body", with: @post.body
     fill_in "User", with: @post.user_id
     click_on "Create Post"
 
