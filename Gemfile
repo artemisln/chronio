@@ -50,6 +50,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "pg"
 end
 
 group :test do
@@ -57,6 +58,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'database_cleaner-active_record'
+  gem "pg"
 end
 
 gem "devise", "~> 4.9"
