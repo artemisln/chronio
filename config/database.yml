@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: chronio_production
-  username: chronio
+  username: artemis
   password: <%= ENV["CHRONIO_DATABASE_PASSWORD"] %>
