@@ -68,3 +68,5 @@ gem "rails-i18n"
 
 # Icons gem
 gem 'font-awesome-sass', '~> 6.5'
+
+gem 'ostruct'
