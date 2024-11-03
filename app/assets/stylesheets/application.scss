@@ -13,9 +13,27 @@
  *= require_tree .
  *= require_self
  */
-@import "font-awesome-sprockets";
 @import "font-awesome";
 
 [data-dropdown-target="menu"] .relative:hover .absolute {
     display: block;
 }
+
+.sign-out-link {
+    color: #4b5563; 
+    transition: color 0.2s ease-in-out;
+    text-align: left;
+  
+    &:hover {
+      color: #dc2626; 
+    }
+}
+
+.dropdown-option {
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  

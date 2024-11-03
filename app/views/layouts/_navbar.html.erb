@@ -20,7 +20,7 @@
     <% end %>
 
     <!-- Messages Button with Icon -->
-    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
+    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
       <i class="fas fa-comment-dots text-xl mb-1"></i>
       <span class="text-sm"><%= t('menu.messages') %></span>
     <% end %>
@@ -30,35 +30,67 @@
       <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
       <p class="flex flex-col items-center text-gray-100 cursor-pointer" data-action="click->dropdown#toggle">
         <i class="fas fa-user text-xl mb-1"></i>
-        <span class="text-sm"><%= t('menu.profile') %></span>
+        <span class="text-sm gap-1"><%= t('menu.profile') %><i class="fas fa-caret-down text-xs"></i></span>
       </p>
         
         <!-- Dropdown Menu -->
-        <div class="absolute flex flex-col items-center top-10 right-0 w-56 bg-gray-200 rounded-lg p-4 text-center text-sm hidden" data-dropdown-target="menu">
-          <p class="text-gray-800 font-bold mb-2"><%= current_user.username %></p>
-          <hr class="w-full border-t border-gray-300 mb-2">
-          
-          <!-- Edit Account Link -->
-          <%= link_to t('menu.edit_account'), edit_user_registration_path, class: "text-gray-800 mb-2" %>
+        <div class="absolute flex flex-col top-10 right-0 w-56 bg-gray-200 rounded-lg p-4 text-center text-sm hidden" data-dropdown-target="menu">
+          <!-- User Info Row -->
+          <div class="flex items-center mb-2">
+            <!-- Icon Section -->
+            <div class="flex justify-center items-center" style="width: 20%;">
+              <i class="fas fa-user-circle text-3xl text-gray-700"></i>
+            </div>
+            
+            <!-- Username Section -->
+            <div class="flex justify-center items-center" style="width: 80%;">
+              <span class="text-gray-800 font-semibold text-center">
+                <%= current_user.username %>
+              </span>
+            </div>
+          </div>
 
-          <!-- Language Selection Dropdown with Hover -->
-          <div class="relative mt-2 w-full">
-            <button class="text-gray-800 mb-2"> <%= t('menu.language') %> </button>
-            <ul class="absolute hidden right-0 mt-1 w-32 bg-gray-100 rounded-lg shadow-lg p-2 text-left group-hover:block">
-              <% if I18n.locale != :en %>
-                <li><%= link_to t('menu.english'), locale: :en, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
-              <% end %>
-              <% if I18n.locale != :es %>
-                <li><%= link_to t('menu.spanish'), locale: :es, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
-              <% end %>
-              <% if I18n.locale != :gr %>
-                <li><%= link_to t('menu.greek'), locale: :gr, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
-              <% end %>
+          <hr class="w-full border-t border-gray-300 my-2">
+
+          <!-- Account Section -->
+          <div class="text-left">
+            <p class="font-bold text-base text-gray-700 mb-1">Account</p>
+            <ul class="text-sm text-gray-600 space-y-1 pl-2">
+              <li class="mb-1"><%= link_to t('menu.edit_account'), edit_user_registration_path, class:"dropdown-option" %></li>
+              <li class="mb-1"><%= link_to "Help", "#", class:"dropdown-option" %></li>
+              <!-- Language Dropdown -->
+              <li class="relative">
+                <button class="text-gray-800 dropdown-option"> <%= t('menu.language') %> </button>
+                <ul class="absolute hidden right-0 mt-1 w-32 bg-gray-100 rounded-lg shadow-lg p-2 text-left group-hover:block">
+                  <% if I18n.locale != :en %>
+                    <li><%= link_to t('menu.english'), locale: :en, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
+                  <% end %>
+                  <% if I18n.locale != :es %>
+                    <li><%= link_to t('menu.spanish'), locale: :es, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
+                  <% end %>
+                  <% if I18n.locale != :gr %>
+                    <li><%= link_to t('menu.greek'), locale: :gr, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
+                  <% end %>
+                </ul>
+              </li>
             </ul>
           </div>
 
           <hr class="w-full border-t border-gray-300 my-2">
-          <%= link_to t('menu.sign_out'), destroy_user_session_path, class: "p-2 w-full rounded-lg bg-gray-500 text-gray-50" %>
+
+          <!-- Management Section -->
+          <div class="text-left">
+            <p class="font-bold text-base text-gray-700 mb-1">Management</p>
+            <ul class="text-sm text-gray-600 space-y-2 pl-2">
+              <li><%= link_to "Posts", posts_path, class:"dropdown-option" %></li>
+            </ul>
+          </div>
+
+          <hr class="w-full border-t border-gray-300 my-2">
+
+          <!-- Sign Out -->
+          <%= link_to t('menu.sign_out'), destroy_user_session_path, method: :delete, class: "sign-out-link dropdown-option" %>
+
         </div>
       </div>
     <% end %>
