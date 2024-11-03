@@ -18,7 +18,7 @@ Welcome to **Chronio**! This is a social media application where users can conne
 
 ## 🎬 Demo
 
-🚀 **Try out the app:** [Link coming soon! Stay tuned.](#)
+🚀 **Try out the app:** [Click here!](https://chronio.onrender.com/)
 
 ---
 
