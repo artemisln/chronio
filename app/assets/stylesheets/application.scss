@@ -16,24 +16,52 @@
 @import "font-awesome";
 
 [data-dropdown-target="menu"] .relative:hover .absolute {
-    display: block;
+  display: block;
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
 }
 
 .sign-out-link {
-    color: #4b5563; 
-    transition: color 0.2s ease-in-out;
-    text-align: left;
-  
-    &:hover {
-      color: #dc2626; 
-    }
+  color: #4b5563; 
+  transition: color 0.2s ease-in-out;
+  text-align: left;
+
+  &:hover {
+    color: #dc2626; 
+  }
 }
 
 .dropdown-option {
-    text-decoration: none;
-  
-    &:hover {
-      text-decoration: underline;
-    }
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+.home-link, .network-link, .jobs-link, .messages-link {
+  position: relative;
+  text-decoration: none;
+
+  // Underline pseudo-element
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; 
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50%;
+    height: 2px; 
+    background-color: white; 
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.3s ease;
+  }
+
+  // Show underline only when active
+  &.active-link::after {
+    opacity: 1;
+    width: 100%; 
+  }
+}
   

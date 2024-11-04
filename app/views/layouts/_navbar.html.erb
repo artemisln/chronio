@@ -2,26 +2,53 @@
   <div class="max-w-7xl w-full h-full mx-auto flex items-center justify-between">
     
     <!-- Home Button with Icon -->
-    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
-      <i class="fas fa-home text-xl mb-1"></i>
+    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 home-link #{'active-link' if current_page?(root_path(locale: I18n.locale))}" do %>
+      
+      <!-- Default Home Icon -->
+      <i class="fa-solid fa-house text-xl mb-1 home-icon-default" 
+        style="<%= current_page?(root_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;' %>"></i>
+      
+      <!-- Active Home Icon -->
+      <i class="fa-solid fa-house-chimney text-xl mb-1 home-icon-active" 
+        style="<%= current_page?(root_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;' %>"></i>
+      
       <span class="text-sm"><%= t('menu.home') %></span>
-    <% end %>    
+    <% end %>
 
     <!-- Network Button with Icon -->
-    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
-      <i class="fas fa-user-friends text-xl mb-1"></i>
+    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 network-link #{'active-link' if current_page?(network_path(locale: I18n.locale))}" do %>
+    
+      <!-- Default Network Icon -->
+      <i class="fa-solid fa-user text-xl mb-1 network-icon-default" 
+        style="<%= current_page?(network_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;' %>"></i>
+      
+      <!-- Active Network Icon -->
+      <i class="fa-solid fa-users text-xl mb-1 network-icon-active" 
+        style="<%= current_page?(network_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;' %>"></i>
+      
       <span class="text-sm"><%= t('menu.network') %></span>
     <% end %>
 
     <!-- Jobs Button with Icon -->
-    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
-      <i class="fas fa-briefcase text-xl mb-1"></i>
+    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? 'active-link' : ''}" do %>
+      <!-- Default Jobs Icon -->
+      <i class="fa-solid fa-briefcase text-xl mb-1 jobs-icon-default" <% unless current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+
+      <!-- Active Jobs Icon -->
+      <i class="fa-solid fa-business-time text-xl mb-1 jobs-icon-active" <% if current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+
       <span class="text-sm"><%= t('menu.jobs') %></span>
     <% end %>
 
+
     <!-- Messages Button with Icon -->
-    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100" do %>
-      <i class="fas fa-comment-dots text-xl mb-1"></i>
+    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 messages-link #{current_page?(messages_path(locale: I18n.locale)) ? 'active-link' : ''}" do %>
+      <!-- Default Messages Icon -->
+      <i class="fa-regular fa-comment text-xl mb-1 messages-icon-default" <% unless current_page?(messages_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+
+      <!-- Active Messages Icon -->
+      <i class="fa-regular fa-comments text-xl mb-1 messages-icon-active" <% if current_page?(messages_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+
       <span class="text-sm"><%= t('menu.messages') %></span>
     <% end %>
 
@@ -30,9 +57,11 @@
       <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
       <p class="flex flex-col items-center text-gray-100 cursor-pointer" data-action="click->dropdown#toggle">
         <i class="fas fa-user text-xl mb-1"></i>
-        <span class="text-sm gap-1"><%= t('menu.profile') %><i class="fas fa-caret-down text-xs"></i></span>
-      </p>
-        
+        <span class="text-sm flex items-center" style="gap: 0.250rem;">
+          <%= t('menu.profile') %>
+          <i class="fas fa-caret-down text-xs"></i>
+        </span>
+      </p>     
         <!-- Dropdown Menu -->
         <div class="absolute flex flex-col top-10 right-0 w-56 bg-gray-200 rounded-lg p-4 text-center text-sm hidden" data-dropdown-target="menu">
           <!-- User Info Row -->
@@ -61,7 +90,7 @@
               <!-- Language Dropdown -->
               <li class="relative">
                 <button class="text-gray-800 dropdown-option"> <%= t('menu.language') %> </button>
-                <ul class="absolute hidden right-0 mt-1 w-32 bg-gray-100 rounded-lg shadow-lg p-2 text-left group-hover:block">
+                <ul class="absolute hidden right-0 mt-1 w-40 bg-gray-100 rounded-lg shadow-lg p-4 text-left group-hover:block">
                   <% if I18n.locale != :en %>
                     <li><%= link_to t('menu.english'), locale: :en, class: "block px-2 py-1 text-gray-800 hover:bg-gray-200 rounded-md" %></li>
                   <% end %>
