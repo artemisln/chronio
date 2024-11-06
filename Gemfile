@@ -70,3 +70,6 @@ gem "rails-i18n"
 gem 'font-awesome-sass', '~> 6.5'
 
 gem 'ostruct'
+
+# Amazon S3 gem for active storage 
+gem "aws-sdk-s3"
