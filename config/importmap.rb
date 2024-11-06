@@ -2,6 +2,7 @@
 
 pin "application"
 pin "trix"
+pin "iconToggle", to: "javascript/iconToggle.js"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "@rails/ujs", to: "@rails--ujs.js" # @7.1.3
 pin "@hotwired/stimulus", to: "stimulus.min.js"
