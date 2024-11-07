@@ -12,6 +12,7 @@ gr:
     network: "Δίκτυο"
     messages: "Μηνύματα"
     profile: "Εγώ"
+    search: "Αναζήτηση"
   feed:
     new_post: "Νέα δημοσίευση!"
     title: "Το feed σου"

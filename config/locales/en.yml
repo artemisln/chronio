@@ -42,6 +42,7 @@ en:
     network: "Network"
     messages: "Messages"
     profile: "Me"
+    search: "Search"
   feed:
     new_post: "New Post!"
     title: "Your Feed"

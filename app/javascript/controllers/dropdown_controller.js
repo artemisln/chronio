@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["menu"];
+  static targets = ["menu", "languageMenu"];
 
   toggle(event) {
     event.stopPropagation();
@@ -11,7 +11,10 @@ export default class extends Controller {
 
   close() {
     if (!this.menuTarget.classList.contains("hidden")) {
-      this.menuTarget.classList.add("hidden")
+      this.menuTarget.classList.add("hidden");
+    }
+    if (!this.languageMenuTarget.classList.contains("hidden")) {
+      this.languageMenuTarget.classList.add("hidden");
     }
   }
 
@@ -22,9 +25,7 @@ export default class extends Controller {
 
   closeUnlessDropdown(event) {
     if (!this.element.contains(event.target)) {
-      this.menuTarget.classList.add("hidden");
-      this.languageMenuTarget.classList.add("hidden");
-      this.close()
+      this.close();
     }
   }
 }

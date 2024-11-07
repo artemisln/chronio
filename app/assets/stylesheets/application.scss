@@ -64,4 +64,50 @@
     width: 100%; 
   }
 }
-  
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.search-icon {
+  cursor: pointer;
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.search-label {
+  transition: opacity 0.3s ease;
+}
+
+.search-input {
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  height: 40px;
+  background-color: #2d3748;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  outline: none; 
+}
+
+.search-input:focus {
+  outline: none; 
+  box-shadow: none;
+}
+
+.search-container.expanded .search-input {
+  width: 250px; 
+  opacity: 1;
+  padding: 0 10px; 
+}
+
+.search-container.expanded .search-label {
+  display: none; 
+}
