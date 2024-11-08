@@ -47,7 +47,7 @@
                 <% end %>
 
                 <!-- Show current reaction  -->
-                <%= link_to "#", data: { action: "dropdown#toggle" } do %>
+                <%= link_to "#!", data: { action: "dropdown#toggle" } do %>
                     <%= render "reaction", post: post, user: current_user %>
                 <% end %>
 
@@ -77,8 +77,8 @@
     <!-- Comments Section -->
     <%= turbo_frame_tag dom_id(post, :comments) do %>
         <div class="w-full flex items-center gap-4">
-            <%= link_to "View #{post.comments.count} comments", post_comments_path(post, locale: I18n.locale), class: "border-2 border-white bg-white bg-opacity-15 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-cyan-200" %>
-            <%= link_to "Comment what you think", new_post_comment_path(post, locale: I18n.locale), class: "border-2 border-white bg-white bg-opacity-15 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-cyan-200" %>
+            <%= link_to "View #{post.comments.count} comments", post_comments_path(post, locale: I18n.locale), class: "border-2 border-stone-300 bg-blue-100 bg-opacity-80 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-blue-300 duration-150", data: { turbo_frame: dom_id(post, :comments)} %>
+            <%= link_to "Comment what you think", new_post_comment_path(post, locale: I18n.locale), class: "border-2 border-stone-300 bg-blue-100 bg-opacity-80 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-blue-300 duration-150" %>
         </div>
     <% end %>
 </div>
