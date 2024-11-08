@@ -6,3 +6,4 @@ import "@rails/actiontext";
 import "controllers"
 import "@hotwired/turbo-rails"
 import "./iconToggle";
+import "./toggleSearch";
