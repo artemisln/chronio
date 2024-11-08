@@ -6,13 +6,14 @@ es:
     edit_account: "Editar cuenta"
     sign_out: "Cerrar sesión"
     language: "Idioma"
-    english: "Inglés"
-    spanish: "Español"
-    greek: "Griego"
+    english: "Inglés (English)"
+    spanish: "Español (Spanish)"
+    greek: "Griego (Greek)"
     jobs: "Empleos"
-    network: "Red"
+    network: "Mi red"
     messages: "Mensajes"
-    profile: "Mí"
+    profile: "Yo"
+    search: "Buscar"
   feed:
     new_post: "Nueva publicación!"
     title: "Tu Feed"
@@ -21,3 +22,5 @@ es:
     back_to_home: "Volver a Inicio"
   post:
     new_post: "Nueva publicación"
+  footer:
+    about: "Acerca de"

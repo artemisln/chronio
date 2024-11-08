@@ -20,9 +20,17 @@
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
-  <body>
-    <%= render "layouts/navbar" if current_user%>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <%= render "layouts/navbar" if current_user %>
     <%= render "layouts/alerts" %>
-    <%= yield %>
+
+    <!-- Main content -->
+    <main class="flex-grow-1">
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <%= render "layouts/footer" %>
   </body>
 </html>
