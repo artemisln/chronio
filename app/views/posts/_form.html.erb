@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :caption, "Τίτλος" %>
+    <%= form.label :caption, "Title" %>
     <%= form.text_field :caption, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :body, "Περιεχόμενο" %>
+    <%= form.label :body, "Content" %>
     <%= form.rich_text_area :body, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :images, "Εικόνες" %>
+    <%= form.label :images, "Images" %>
     <%= form.file_field :images, multiple: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="text-center">
-    <%= form.submit "Υποβολή", class: "bg-black bg-opacity-70 text-white p-4 rounded-lg w-48 text-center hover:bg-opacity-90 transition duration-200" %>
+    <%= form.submit "Submit", class: "bg-black bg-opacity-70 text-white p-4 rounded-lg w-48 text-center hover:bg-opacity-90 transition duration-200" %>
   </div>
 <% end %>

@@ -1,24 +1,27 @@
-<div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Τίτλος:</strong>
-    <%= post.caption %>
-  </p>
+    <div class="flex flex-col px-4 items-center justify-center min-h-screen w-full bg-cover bg-top">
+      <div class="min-h-96 w-full bg-gray-200 rounded-lg relative p-2">
+        <div id="<%= dom_id post %>">
+          <p class="my-5">
+            <strong class="text-2xl font-semibold block mb-1">Title:</strong>
+            <%= post.caption %>
+          </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Περιεχόμενο:</strong>
-    <%= post.body %>
-  </p>
+          <p class="my-5">
+            <strong class="text-xl block font-medium mb-1">Content:</strong>
+            <%= post.body %>
+          </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Εικόνες:</strong>
-    <% post.images.each do |image| %>
-      <div><%= link_to image.filename, image %></div>
-    <% end %>
-  </p>
+          <p class="my-5">
+            <strong class="block font-medium mb-1">Images:</strong>
+            <% post.images.each do |image| %>
+              <div><%= link_to image.filename, image %></div>
+            <% end %>
+          </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Χρήστης:</strong>
-    <%= post.user_id %>
-  </p>
-
-</div>
+          <p class="my-5">
+            <strong class="block font-medium mb-1">User:</strong>
+            <%= post.user.username %>
+          </p>
+        </div>
+      </div>
+    </div>
