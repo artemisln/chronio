@@ -2,10 +2,15 @@
     <div class="max-w-5xl w-full mx-auto">
         <%= turbo_frame_tag @post, :comments do %>
             <div class="flex flex-col gap-2">
+            <% if @post.comments.any? %>
                 <%= render partial: "comment", collection: @post.comments.order(created_at: :desc) %>
+            <% else %>
+                <p class="text-center text-xl"> No comments🤨 </p>
+            <% end %>
             </div>
             <div class="w-full flex justify-between items-center mt-4">
                 <%= link_to "Cancel", "/", class: "border-2 border-black bg-blue-100 bg-opacity-15 text-sm text-red p-2 rounded-lg w-52 text-center hover:scale-105 hover:bg-blue-300 duration-150"%>
+                <%= link_to "Comment now", new_post_comment_path(@post, locale: I18n.locale), class: "border-2 border-black bg-blue-100 bg-opacity-15 text-sm text-red p-2 rounded-lg w-52 text-center hover:scale-105 hover:bg-blue-300 duration-150" %>
             </div>
         <% end %>
     </div>
