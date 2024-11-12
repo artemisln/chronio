@@ -6,8 +6,8 @@ gr:
     edit_account: "Επεξεργασία Λογαριασμού"
     sign_out: "Αποσύνδεση"
     language: "Γλώσσα"
-    english: "Αγγλικά"
-    spanish: "Ισπανικά"
+    english: "English (Αγγλικά)"
+    spanish: "Español (Ισπανικά)"
     jobs: "Εργασίες"
     network: "Δίκτυο"
     messages: "Μηνύματα"
@@ -21,3 +21,5 @@ gr:
     back_to_home: "Πίσω στην αρχική"
   post:
     new_post: "Νέα δημοσίευση"
+  footer:
+    about: "Σχετικά με εμάς"
