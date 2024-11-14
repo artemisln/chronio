@@ -2,11 +2,11 @@
   <div class="max-w-7xl w-full h-full mx-auto flex items-center justify-between">
     <!-- Logo -->
 
-    <div class="relative search-container">
+    <div class="relative search-container" data-controller="toggle-search" data-toggle-search-target="searchContainer">
       <!-- Icon and Label Wrapper -->
       <div class="flex flex-col items-center">
         <!-- Search Icon -->
-        <i class="fa-solid fa-magnifying-glass search-icon" onclick="toggleSearchBox()"></i>
+        <i class="fa-solid fa-magnifying-glass search-icon" data-action="click->toggle-search#toggle"></i>
         
         <!-- Search Label -->
         <span class="text-sm text-gray-100 mt-1 search-label"><%= t('menu.search') %></span>
@@ -16,54 +16,48 @@
       <input type="text" placeholder="<%= t('menu.search') %>" class="search-input" />
     </div>
 
-
     <!-- Home Button with Icon -->
-    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 home-link #{'active-link' if current_page?(root_path(locale: I18n.locale))}" do %>
+    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 home-link #{'active-link' if current_page?(root_path(locale: I18n.locale))}", data: { controller: "icon-toggle" } do %>
       
       <!-- Default Home Icon -->
-      <i class="fa-solid fa-house text-xl mb-1 home-icon-default" 
-        style="<%= current_page?(root_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;' %>"></i>
+      <i class="fa-solid fa-house text-xl mb-1 home-icon-default" data-icon-toggle-target="defaultIcon" style="<%= current_page?(root_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;' %>"></i>
       
       <!-- Active Home Icon -->
-      <i class="fa-solid fa-house-chimney text-xl mb-1 home-icon-active" 
-        style="<%= current_page?(root_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;' %>"></i>
+      <i class="fa-solid fa-house-chimney text-xl mb-1 home-icon-active" data-icon-toggle-target="activeIcon" style="<%= current_page?(root_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;' %>"></i>
       
       <span class="text-sm"><%= t('menu.home') %></span>
     <% end %>
 
     <!-- Network Button with Icon -->
-    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 network-link #{'active-link' if current_page?(network_path(locale: I18n.locale))}" do %>
+    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 network-link #{'active-link' if current_page?(network_path(locale: I18n.locale))}", data: { controller: "icon-toggle" } do %>
     
       <!-- Default Network Icon -->
-      <i class="fa-solid fa-user text-xl mb-1 network-icon-default" 
-        style="<%= current_page?(network_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;' %>"></i>
+      <i class="fa-solid fa-user text-xl mb-1 network-icon-default" data-icon-toggle-target="defaultIcon" style="<%= current_page?(network_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;' %>"></i>
       
       <!-- Active Network Icon -->
-      <i class="fa-solid fa-users text-xl mb-1 network-icon-active" 
-        style="<%= current_page?(network_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;' %>"></i>
+      <i class="fa-solid fa-users text-xl mb-1 network-icon-active" data-icon-toggle-target="activeIcon" style="<%= current_page?(network_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;' %>"></i>
       
       <span class="text-sm"><%= t('menu.network') %></span>
     <% end %>
 
     <!-- Jobs Button with Icon -->
-    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? 'active-link' : ''}" do %>
+    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? 'active-link' : ''}", data: { controller: "icon-toggle" } do %>
       <!-- Default Jobs Icon -->
-      <i class="fa-solid fa-briefcase text-xl mb-1 jobs-icon-default" <% unless current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+      <i class="fa-solid fa-briefcase text-xl mb-1 jobs-icon-default" data-icon-toggle-target="defaultIcon" <% unless current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
 
       <!-- Active Jobs Icon -->
-      <i class="fa-solid fa-business-time text-xl mb-1 jobs-icon-active" <% if current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+      <i class="fa-solid fa-business-time text-xl mb-1 jobs-icon-active" data-icon-toggle-target="activeIcon" <% if current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
 
       <span class="text-sm"><%= t('menu.jobs') %></span>
     <% end %>
 
-
     <!-- Messages Button with Icon -->
-    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 messages-link #{current_page?(messages_path(locale: I18n.locale)) ? 'active-link' : ''}" do %>
+    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 messages-link #{current_page?(messages_path(locale: I18n.locale)) ? 'active-link' : ''}", data: { controller: "icon-toggle" } do %>
       <!-- Default Messages Icon -->
-      <i class="fa-regular fa-comment text-xl mb-1 messages-icon-default" <% unless current_page?(messages_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+      <i class="fa-regular fa-comment text-xl mb-1 messages-icon-default" data-icon-toggle-target="defaultIcon" <% unless current_page?(messages_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
 
       <!-- Active Messages Icon -->
-      <i class="fa-regular fa-comments text-xl mb-1 messages-icon-active" <% if current_page?(messages_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
+      <i class="fa-regular fa-comments text-xl mb-1 messages-icon-active" data-icon-toggle-target="activeIcon" <% if current_page?(messages_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
 
       <span class="text-sm"><%= t('menu.messages') %></span>
     <% end %>
