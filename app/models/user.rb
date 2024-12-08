@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :reactions
   has_many :comments
+  has_many :jobs, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
 end

@@ -1,0 +1,3 @@
+<%= turbo_stream.append dom_id(post, :comments) do %>
+  <%= render partial: "comments/comment", object: @comment %>
+<% end %>

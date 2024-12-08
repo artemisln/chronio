@@ -41,8 +41,7 @@
     <% end %>
 
     <!-- Jobs Button with Icon -->
-    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? 'active-link' : ''}", data: { controller: "icon-toggle" } do %>
-      <!-- Default Jobs Icon -->
+    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? 'active-link' : ''}", data: { controller: "icon-toggle" } do %>      <!-- Default Jobs Icon -->
       <i class="fa-solid fa-briefcase text-xl mb-1 jobs-icon-default" data-icon-toggle-target="defaultIcon" <% unless current_page?(jobs_path(locale: I18n.locale)) %> style="display: inline;" <% else %> style="display: none;" <% end %>></i>
 
       <!-- Active Jobs Icon -->

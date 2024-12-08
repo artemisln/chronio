@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  salary: 9.99
+  location: MyString
+  user: one
+
+two:
+  name: MyString
+  description: MyText
+  salary: 9.99
+  location: MyString
+  user: two

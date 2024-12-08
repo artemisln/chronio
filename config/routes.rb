@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|es|gr|fr/ do  # Add any additional supported language codes here
     resources :posts do
       scope module: :posts do
-        resources :reactions, only: [ :create ]
+        resources :reactions, only: [:create]
         resources :comments, only: [:new, :create, :index]
       end
     end
@@ -10,12 +10,13 @@ Rails.application.routes.draw do
     resources :feeds, only: [:show]
 
     devise_for :users
+
+    resources :jobs
     get "pages/home", to: "pages#home", as: :pages_home
     get "pages/about", to: "pages#about", as: :pages_about
     get "pages/tos", to: "pages#tos", as: :pages_tos
     get "pages/privacy-policy", to: "pages#privacy_policy", as: :pages_privacy_policy
     get "pages/network", to: "pages#network", as: :network
-    get "pages/jobs", to: "pages#jobs", as: :jobs
     get "pages/messages", to: "pages#messages", as: :messages
 
     # Health check route
