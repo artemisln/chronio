@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :caption, "Title" %>
-    <%= form.text_field :caption, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :caption, "Title", for: "post_caption" %>
+    <%= form.text_field :caption, id: "post_caption", name: "post[caption]", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :body, "Content" %>
-    <%= form.rich_text_area :body, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :body, "Content", for: "post_body" %>
+    <%= form.rich_text_area :body, id: "post_body", name: "post[body]", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :images, "Images" %>
-    <%= form.file_field :images, multiple: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :images, "Images", for: "post_images" %>
+    <%= form.file_field :images, multiple: true, id: "post_images", name: "post[images][]", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="text-center">

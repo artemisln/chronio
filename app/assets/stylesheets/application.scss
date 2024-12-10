@@ -1,3 +1,6 @@
+@import "font-awesome";
+@import "actiontext.css";
+@import "trix";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,7 +16,6 @@
  *= require_tree .
  *= require_self
  */
-@import "font-awesome";
 
 [data-dropdown-target="menu"] .relative:hover .absolute {
   display: block;
