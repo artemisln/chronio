@@ -67,7 +67,7 @@ gem "tailwind_devise", "~> 0.0.3"
 gem "rails-i18n"
 
 # Icons gem
-gem 'font-awesome-sass', '~> 6.5'
+gem 'font-awesome-sass', '~> 6.7'
 
 gem 'ostruct'
 
