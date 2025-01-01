@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!  # Ensure the user is logged in
+  before_action :authenticate_user!
   before_action :set_current_user_post, only: %i[edit update destroy]
 
   # GET /posts or /posts.json
@@ -36,9 +36,12 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts/1/edit
+  def edit
+  end
+
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to post_url(@post, locale: I18n.locale), notice: "Post was successfully updated." }
@@ -52,23 +55,23 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy!
-
+    @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: "Post was successfully destroyed." }
+      format.html { redirect_to posts_url(locale: I18n.default_locale), notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_current_user_post
-      @post = current_user.posts.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_current_user_post
+    @post = current_user.posts.find_by(id: params[:id])
+    redirect_to posts_path, alert: "Post not found." if @post.nil?
+  end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:caption, :body, images: [])
-    end
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:caption, :body, images: [])
+  end
 end

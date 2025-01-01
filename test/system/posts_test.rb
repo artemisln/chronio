@@ -1,45 +1,50 @@
 require "application_system_test_case"
+require "devise/test/integration_helpers"
 
 class PostsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @user = users(:one)
     @post = posts(:one)
+    sign_in @user
   end
 
-
   test "visiting the index" do
-    visit posts_url
-    assert_selector ".post", text: @post.caption
+    visit posts_path(locale: I18n.default_locale)
+    assert_selector ".post", text: @post.body.to_plain_text
   end
 
   test "should create post" do
-    visit root_path
+    visit posts_path(locale: I18n.default_locale)
     click_on "New post"
-
-    fill_in "Caption", with: @post.caption
-    fill_in "Body", with: @post.body
-    fill_in "User", with: @post.user_id
-    click_on "Create Post"
+    
+    fill_in "Title", with: "My first post"
+    page.execute_script("document.querySelector('trix-editor').editor.insertString('This is the body of the first post.');")
+    page.execute_script("document.querySelector('trix-editor').dispatchEvent(new Event('input', { bubbles: true }));")
+    click_on "Submit"
 
     assert_text "Post was successfully created"
-    click_on "Back"
   end
 
-  test "should update Post" do
-    visit post_url(@post)
-    click_on "Edit this post", match: :first
+  test "should update post" do
+    visit post_path(@post, locale: I18n.default_locale)
+    click_on "Edit", match: :first
 
-    fill_in "Caption", with: @post.caption
-    fill_in "User", with: @post.user_id
-    click_on "Update Post"
+    fill_in "Title", with: "Updated title"
+    page.execute_script("document.querySelector('trix-editor').editor.setSelectedRange([0, document.querySelector('trix-editor').editor.getDocument().toString().length]);")
+    page.execute_script("document.querySelector('trix-editor').editor.insertString('Updated body');")
+    page.execute_script("document.querySelector('trix-editor').dispatchEvent(new Event('input', { bubbles: true }));")
+    click_on "Submit"
 
     assert_text "Post was successfully updated"
-    click_on "Back"
   end
 
-  test "should destroy Post" do
-    visit post_url(@post)
-    click_on "Destroy this post", match: :first
+  test "should destroy post" do
+    visit post_path(@post, locale: I18n.default_locale)
+    accept_confirm do
+      click_on "Destroy", match: :first
+    end
 
     assert_text "Post was successfully destroyed"
   end
