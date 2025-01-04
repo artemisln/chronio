@@ -24,3 +24,18 @@ module ActiveSupport
     end
   end
 end
+
+Capybara.register_driver :selenium_chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--headless') # Run in headless mode for CI
+  options.add_argument("--user-data-dir=#{ENV['CHROME_USER_DATA_DIR']}") # Use unique user data directory
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+Capybara.javascript_driver = :selenium_chrome
+
+class ActionDispatch::SystemTestCase
+  driven_by :selenium_chrome
+end

@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   scan_ruby:
@@ -64,7 +64,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-  
+
     services:
       postgres:
         image: postgres
@@ -79,23 +79,35 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: chronio_test
-  
+
     steps:
       - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3
-  
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y curl libjemalloc2 libvips42 postgresql-client
+
+      - name: Install Google Chrome and ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-chromedriver: true
+          install-dependencies: true
+        id: setup-chrome
+
+      - name: Check for Chrome and ChromeDriver
+        run: |
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
+          ${{ steps.setup-chrome.outputs.chromedriver-path }} --version
+
       - name: Checkout code
         uses: actions/checkout@v4
-  
+
       - name: Set permissions for bin scripts
         run: chmod +x bin/*
-  
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-  
+
       - name: Wait for PostgreSQL to be ready
         run: |
           for i in {1..10}; do
@@ -108,12 +120,15 @@ jobs:
           done;
           echo "PostgreSQL failed to start.";
           exit 1;
-  
+
       - name: Run tests
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/chronio_test
-        run: bin/rails db:prepare && bin/rails test:system
+        run: |
+          # Create a unique user data directory for each test run
+          export CHROME_USER_DATA_DIR=$(mktemp -d)
+          bin/rails db:prepare && bin/rails test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
