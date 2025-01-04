@@ -1,7 +1,7 @@
 require "application_system_test_case"
 require "devise/test/integration_helpers"
 
-class PostsTest < ApplicationSystemTestCase
+class PostsTest < ActionDispatch::SystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -12,18 +12,17 @@ class PostsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit posts_path(locale: I18n.default_locale)
-    assert_selector ".post", text: @post.body.to_plain_text
+    assert_selector ".post", text: @post.body.to_plain_text, wait: 5 # Add a wait time
   end
 
   test "should create post" do
     visit posts_path(locale: I18n.default_locale)
     click_on "New post"
-    
+  
     fill_in "Title", with: "My first post"
-    page.execute_script("document.querySelector('trix-editor').editor.insertString('This is the body of the first post.');")
-    page.execute_script("document.querySelector('trix-editor').dispatchEvent(new Event('input', { bubbles: true }));")
+    fill_in_rich_text_area "Content", with: "This is the body of the first post."
     click_on "Submit"
-
+  
     assert_text "Post was successfully created"
   end
 
