@@ -87,6 +87,7 @@ jobs:
       - name: Install Google Chrome and ChromeDriver
         uses: browser-actions/setup-chrome@v1
         with:
+          chrome-version: stable
           install-chromedriver: true
           install-dependencies: false
         id: setup-chrome
