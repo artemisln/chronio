@@ -7,7 +7,7 @@ on:
 
 jobs:
   scan_ruby:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -88,7 +88,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         with:
           install-chromedriver: true
-          install-dependencies: true
+          install-dependencies: false
         id: setup-chrome
 
       - name: Check for Chrome and ChromeDriver
