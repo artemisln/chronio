@@ -129,24 +129,24 @@ GEM
       warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.13.1)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86-linux-gnu)
+    ffi (1.17.1-x86-linux-musl)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     font-awesome-sass (6.7.2)
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    image_processing (1.13.0)
-      mini_magick (>= 4.9.5, < 5)
+    image_processing (1.14.0)
+      mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
     importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
@@ -162,7 +162,7 @@ GEM
     jmespath (1.6.2)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
-    logger (1.6.4)
+    logger (1.6.5)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -173,7 +173,9 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    mini_magick (4.13.2)
+    mini_magick (5.1.2)
+      benchmark
+      logger
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.4)
@@ -300,7 +302,7 @@ GEM
       rubocop-performance
       rubocop-rails
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.2)
+    ruby-vips (2.2.3)
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
@@ -384,7 +386,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   font-awesome-sass (~> 6.7)
-  image_processing (~> 1.2)
+  image_processing (~> 1.14)
   importmap-rails
   jbuilder
   ostruct
