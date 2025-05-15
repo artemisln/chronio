@@ -72,3 +72,6 @@ gem 'ostruct'
 
 # Amazon S3 gem for active storage 
 gem "aws-sdk-s3"
+
+# For using SASS in Rails
+gem "sassc"

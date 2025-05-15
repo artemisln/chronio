@@ -304,6 +304,8 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
       base64 (~> 0.2)
@@ -391,6 +393,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rails-i18n
   rubocop-rails-omakase
+  sassc
   selenium-webdriver
   sprockets-rails
   stimulus-rails
