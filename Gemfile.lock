@@ -98,7 +98,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (7.0.0)
+    brakeman (7.0.2)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -139,8 +139,6 @@ GEM
     ffi (1.17.0-x86_64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
     ffi (1.17.0-x86_64-linux-musl)
-    font-awesome-sass (6.7.2)
-      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -166,6 +164,8 @@ GEM
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
+    lucide-rails (0.5.1)
+      railties (>= 4.1.0)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -378,21 +378,22 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bootsnap
-  brakeman
+  brakeman (~> 7.0.2)
   capybara
   database_cleaner-active_record
   debug
   devise (~> 4.9)
-  font-awesome-sass (~> 6.7)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  lucide-rails
   ostruct
   pg (~> 1.5)
   puma (>= 5.0)
   rails (~> 8.0.1)
   rails-i18n
   rubocop-rails-omakase
+  sassc
   selenium-webdriver
   sprockets-rails
   stimulus-rails

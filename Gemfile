@@ -41,7 +41,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "brakeman", "~> 7.0.2", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -67,9 +67,11 @@ gem "tailwind_devise", "~> 0.0.3"
 gem "rails-i18n"
 
 # Icons gem
-gem 'font-awesome-sass', '~> 6.7'
-
+gem 'lucide-rails'
 gem 'ostruct'
 
 # Amazon S3 gem for active storage 
 gem "aws-sdk-s3"
+
+# For using SASS in Rails
+gem "sassc"
