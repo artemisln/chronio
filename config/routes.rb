@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  scope "(:locale)", locale: /en|es|gr|fr/ do  # Add any additional supported language codes here
+  get "settings/show"
+  scope "(:locale)", locale: /en|es|gr|fr/ do  # Will add more locales later
     resources :posts do
       scope module: :posts do
         resources :reactions, only: [:create]
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     get "pages/privacy-policy", to: "pages#privacy_policy", as: :pages_privacy_policy
     get "pages/network", to: "pages#network", as: :network
     get "pages/messages", to: "pages#messages", as: :messages
+    get 'settings', to: 'settings#show', as: :settings
 
     # Health check route
     get "up" => "rails/health#show", as: :rails_health_check
