@@ -139,8 +139,6 @@ GEM
     ffi (1.17.0-x86_64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
     ffi (1.17.0-x86_64-linux-musl)
-    font-awesome-sass (6.7.2)
-      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -306,8 +304,6 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
       base64 (~> 0.2)
@@ -385,7 +381,6 @@ DEPENDENCIES
   database_cleaner-active_record
   debug
   devise (~> 4.9)
-  font-awesome-sass (~> 6.7)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
