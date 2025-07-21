@@ -19,8 +19,7 @@ class PostsTest < ActionDispatch::SystemTestCase
     visit posts_path(locale: I18n.default_locale)
     click_on "New post"
 
-    # FIX: Changed "Title" to "Caption" to match your controller's strong params
-    fill_in "Caption", with: "My first post"
+    fill_in "Title", with: "My first post"
     fill_in_rich_text_area "Content", with: "This is the body of the first post."
     click_on "Submit"
 
@@ -31,8 +30,7 @@ class PostsTest < ActionDispatch::SystemTestCase
     visit post_path(@post, locale: I18n.default_locale)
     click_on "Edit", match: :first
 
-    # FIX: Changed "Title" to "Caption" to match your controller's strong params
-    fill_in "Caption", with: "Updated caption"
+    fill_in "Title", with: "Updated title"
     page.execute_script("document.querySelector('trix-editor').editor.setSelectedRange([0, document.querySelector('trix-editor').editor.getDocument().toString().length]);")
     page.execute_script("document.querySelector('trix-editor').editor.insertString('Updated body');")
     page.execute_script("document.querySelector('trix-editor').dispatchEvent(new Event('input', { bubbles: true }));")
