@@ -18,11 +18,11 @@ class PostsTest < ActionDispatch::SystemTestCase
   test "should create post" do
     visit posts_path(locale: I18n.default_locale)
     click_on "New post"
-
+  
     fill_in "Title", with: "My first post"
     fill_in_rich_text_area "Content", with: "This is the body of the first post."
     click_on "Submit"
-
+  
     assert_text "Post was successfully created"
   end
 
