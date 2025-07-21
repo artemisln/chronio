@@ -110,7 +110,7 @@ jobs:
       - name: Check for Chrome and ChromeDriver
         run: |
           ${{ steps.setup-chrome.outputs.chrome-path }} --version
-          ${{ steps.setup--chromedriver.outputs.chromedriver-path }} --version
+          ${{ steps.setup-chrome.outputs.chromedriver-path }} --version
 
       - name: Checkout code
         uses: actions/checkout@v4
