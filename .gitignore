@@ -39,3 +39,6 @@
 
 /config/credentials/production.key
 /vendor/bundle/ruby/*
+
+# Random files.
+script.py
