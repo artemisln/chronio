@@ -31,20 +31,18 @@ class PostsTest < ActionDispatch::SystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Title", with: "Updated title"
-    page.execute_script("document.querySelector('trix-editor').editor.setSelectedRange([0, document.querySelector('trix-editor').editor.getDocument().toString().length]);")
-    page.execute_script("document.querySelector('trix-editor').editor.insertString('Updated body');")
-    page.execute_script("document.querySelector('trix-editor').dispatchEvent(new Event('input', { bubbles: true }));")
+    fill_in_rich_text_area "Content", with: "Updated body"
     click_on "Submit"
 
     assert_text "Post was successfully updated"
+
+    assert_text "Updated title"
   end
 
   test "should destroy post" do
     visit post_path(@post, locale: I18n.default_locale)
 
-    accept_confirm do
-      click_on "Destroy this post", match: :first
-    end
+    click_on "Destroy this post", match: :first
 
     assert_text "Post was successfully destroyed"
   end
