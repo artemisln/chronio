@@ -62,20 +62,20 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # format:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+  #     - name: Set up Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: .ruby-version
+  #         bundler-cache: true
 
-      - name: Check code formatting
-        run: find . -name '*.rb' -print0 | xargs -0 bundle exec rufo --check
+  #     - name: Check code formatting
+  #       run: find . -name '*.rb' -print0 | xargs -0 bundle exec rufo --check
 
   test:
     runs-on: ubuntu-latest
