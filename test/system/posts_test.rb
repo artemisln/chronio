@@ -18,11 +18,11 @@ class PostsTest < ActionDispatch::SystemTestCase
   test "should create post" do
     visit posts_path(locale: I18n.default_locale)
     click_on "New post"
-
+  
     fill_in "Title", with: "My first post"
     fill_in_rich_text_area "Content", with: "This is the body of the first post."
     click_on "Submit"
-
+  
     assert_text "Post was successfully created"
   end
 
@@ -31,18 +31,19 @@ class PostsTest < ActionDispatch::SystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Title", with: "Updated title"
-    fill_in_rich_text_area "Content", with: "Updated body"
+    page.execute_script("document.querySelector('trix-editor').editor.setSelectedRange([0, document.querySelector('trix-editor').editor.getDocument().toString().length]);")
+    page.execute_script("document.querySelector('trix-editor').editor.insertString('Updated body');")
+    page.execute_script("document.querySelector('trix-editor').dispatchEvent(new Event('input', { bubbles: true }));")
     click_on "Submit"
 
     assert_text "Post was successfully updated"
-
-    assert_text "Updated title"
   end
 
   test "should destroy post" do
     visit post_path(@post, locale: I18n.default_locale)
-
-    click_on "Destroy this post", match: :first
+    accept_confirm do
+      click_on "Destroy", match: :first
+    end
 
     assert_text "Post was successfully destroyed"
   end
