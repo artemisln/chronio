@@ -9,4 +9,3 @@ module Posts
     end
   end
 end
-

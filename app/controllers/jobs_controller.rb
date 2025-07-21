@@ -16,7 +16,7 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.new(job_params)
     if @job.save
-      redirect_to job_path(@job, locale: I18n.locale), notice: 'Job was successfully created.'
+      redirect_to job_path(@job, locale: I18n.locale), notice: "Job was successfully created."
     else
       render :new
     end
@@ -27,7 +27,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      redirect_to job_path(@job, locale: I18n.locale), notice: 'Job was successfully updated.'
+      redirect_to job_path(@job, locale: I18n.locale), notice: "Job was successfully updated."
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job.destroy
-    redirect_to jobs_url(locale: I18n.locale), notice: 'Job was successfully destroyed.'
+    redirect_to jobs_url(locale: I18n.locale), notice: "Job was successfully destroyed."
   end
 
   private

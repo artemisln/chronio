@@ -1,4 +1,4 @@
-<div id="<%= dom_id(post, :reaction)%>">
+<div id="<%= dom_id(post, :reaction) %>">
     <% if reaction = current_user.reactions.find_by(post_id: post.id) %>
         <%= render "reactions/#{reaction.name}" %>
     <% else %>

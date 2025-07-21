@@ -6,69 +6,69 @@
       <!-- Icon and Label Wrapper -->
       <div class="flex flex-col items-center">
         <!-- Search Icon -->
-        <%= lucide_icon('search', class: 'search-icon', data: { action: 'click->toggle-search#toggle' }) %>
+        <%= lucide_icon("search", class: "search-icon", data: { action: "click->toggle-search#toggle" }) %>
         
         <!-- Search Label -->
-        <span class="text-sm text-gray-100 mt-1 search-label"><%= t('menu.search') %></span>
+        <span class="text-sm text-gray-100 mt-1 search-label"><%= t("menu.search") %></span>
       </div>
 
       <!-- Search Input Box -->
-      <input type="text" placeholder="<%= t('menu.search') %>" class="search-input" />
+      <input type="text" placeholder="<%= t("menu.search") %>" class="search-input" />
     </div>
 
     <!-- Home Button with Icon -->
-    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 home-link #{'active-link' if current_page?(root_path(locale: I18n.locale))}", data: { controller: "icon-toggle" } do %>
+    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 home-link #{"active-link" if current_page?(root_path(locale: I18n.locale))}", data: { controller: "icon-toggle" } do %>
       
       <!-- Default Home Icon -->
-      <%= lucide_icon('home', class: 'text-xl mb-1 home-icon-default', data: { icon_toggle_target: 'defaultIcon' }, style: (current_page?(root_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;')) %>
+      <%= lucide_icon("home", class: "text-xl mb-1 home-icon-default", data: { icon_toggle_target: "defaultIcon" }, style: (current_page?(root_path(locale: I18n.locale)) ? "display: none;" : "display: inline;")) %>
       
       <!-- Active Home Icon -->
-      <%= lucide_icon('home', class: 'text-xl mb-1 home-icon-active', data: { icon_toggle_target: 'activeIcon' }, style: (current_page?(root_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;')) %>
+      <%= lucide_icon("home", class: "text-xl mb-1 home-icon-active", data: { icon_toggle_target: "activeIcon" }, style: (current_page?(root_path(locale: I18n.locale)) ? "display: inline;" : "display: none;")) %>
       
-      <span class="text-sm"><%= t('menu.home') %></span>
+      <span class="text-sm"><%= t("menu.home") %></span>
     <% end %>
 
     <!-- Network Button with Icon -->
-    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 network-link #{'active-link' if current_page?(network_path(locale: I18n.locale))}", data: { controller: "icon-toggle" } do %>
+    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 network-link #{"active-link" if current_page?(network_path(locale: I18n.locale))}", data: { controller: "icon-toggle" } do %>
     
       <!-- Default Network Icon -->
-      <%= lucide_icon('users', class: 'text-xl mb-1 network-icon-default', data: { icon_toggle_target: 'defaultIcon' }, style: (current_page?(network_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;')) %>
+      <%= lucide_icon("users", class: "text-xl mb-1 network-icon-default", data: { icon_toggle_target: "defaultIcon" }, style: (current_page?(network_path(locale: I18n.locale)) ? "display: none;" : "display: inline;")) %>
       
       <!-- Active Network Icon -->
-      <%= lucide_icon('users', class: 'text-xl mb-1 network-icon-active', data: { icon_toggle_target: 'activeIcon' }, style: (current_page?(network_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;')) %>
+      <%= lucide_icon("users", class: "text-xl mb-1 network-icon-active", data: { icon_toggle_target: "activeIcon" }, style: (current_page?(network_path(locale: I18n.locale)) ? "display: inline;" : "display: none;")) %>
       
-      <span class="text-sm"><%= t('menu.network') %></span>
+      <span class="text-sm"><%= t("menu.network") %></span>
     <% end %>
 
     <!-- Jobs Button with Icon -->
-    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? 'active-link' : ''}", data: { controller: "icon-toggle" } do %>      <!-- Default Jobs Icon -->
-      <%= lucide_icon('briefcase-business', class: 'text-xl mb-1 jobs-icon-default', data: { icon_toggle_target: 'defaultIcon' }, style: (current_page?(jobs_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;')) %>
+    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 jobs-link #{current_page?(jobs_path(locale: I18n.locale)) ? "active-link" : ""}", data: { controller: "icon-toggle" } do %>      <!-- Default Jobs Icon -->
+      <%= lucide_icon("briefcase-business", class: "text-xl mb-1 jobs-icon-default", data: { icon_toggle_target: "defaultIcon" }, style: (current_page?(jobs_path(locale: I18n.locale)) ? "display: none;" : "display: inline;")) %>
 
       <!-- Active Jobs Icon -->
-      <%= lucide_icon('briefcase-business', class: 'text-xl mb-1 jobs-icon-active', data: { icon_toggle_target: 'activeIcon' }, style: (current_page?(jobs_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;')) %>
+      <%= lucide_icon("briefcase-business", class: "text-xl mb-1 jobs-icon-active", data: { icon_toggle_target: "activeIcon" }, style: (current_page?(jobs_path(locale: I18n.locale)) ? "display: inline;" : "display: none;")) %>
 
-      <span class="text-sm"><%= t('menu.jobs') %></span>
+      <span class="text-sm"><%= t("menu.jobs") %></span>
     <% end %>
 
     <!-- Messages Button with Icon -->
-    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 messages-link #{current_page?(messages_path(locale: I18n.locale)) ? 'active-link' : ''}", data: { controller: "icon-toggle" } do %>
+    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 messages-link #{current_page?(messages_path(locale: I18n.locale)) ? "active-link" : ""}", data: { controller: "icon-toggle" } do %>
       <!-- Default Messages Icon -->
-      <%= lucide_icon('message-square', class: 'text-xl mb-1 messages-icon-default', data: { icon_toggle_target: 'defaultIcon' }, style: (current_page?(messages_path(locale: I18n.locale)) ? 'display: none;' : 'display: inline;')) %>
+      <%= lucide_icon("message-square", class: "text-xl mb-1 messages-icon-default", data: { icon_toggle_target: "defaultIcon" }, style: (current_page?(messages_path(locale: I18n.locale)) ? "display: none;" : "display: inline;")) %>
 
       <!-- Active Messages Icon -->
-      <%= lucide_icon('message-square', class: 'text-xl mb-1 messages-icon-active', data: { icon_toggle_target: 'activeIcon' }, style: (current_page?(messages_path(locale: I18n.locale)) ? 'display: inline;' : 'display: none;')) %>
+      <%= lucide_icon("message-square", class: "text-xl mb-1 messages-icon-active", data: { icon_toggle_target: "activeIcon" }, style: (current_page?(messages_path(locale: I18n.locale)) ? "display: inline;" : "display: none;")) %>
 
-      <span class="text-sm"><%= t('menu.messages') %></span>
+      <span class="text-sm"><%= t("menu.messages") %></span>
     <% end %>
 
     <!-- Profile Button with Icon ("Me" Dropdown) -->
     <% if current_user %>
       <div class="relative" data-controller="dropdown" data-action="click@window->dropdown#closeUnlessDropdown">
       <p class="flex flex-col items-center text-gray-100 cursor-pointer" data-action="click->dropdown#toggle">
-        <%= lucide_icon('user', class: 'text-xl') %>
+        <%= lucide_icon("user", class: "text-xl") %>
         <span class="text-sm flex items-center" style="gap: 0.250rem;">
-          <%= t('menu.profile') %>
-          <%= lucide_icon('chevron-down', class: 'text-xs') %>
+          <%= t("menu.profile") %>
+          <%= lucide_icon("chevron-down", class: "text-xs") %>
         </span>
       </p>     
         <!-- Dropdown Menu -->
@@ -77,7 +77,7 @@
           <div class="flex items-center mb-2">
             <!-- Icon Section -->
             <div class="flex justify-center items-center" style="width: 20%;">
-              <%= lucide_icon('circle-user-round', class: 'text-3xl text-gray-700') %>
+              <%= lucide_icon("circle-user-round", class: "text-3xl text-gray-700") %>
             </div>
             
             <!-- Username Section -->
@@ -94,12 +94,12 @@
           <div class="text-left">
             <p class="font-bold text-base text-gray-700 mb-1">Account</p>
             <ul class="text-sm text-gray-600 space-y-1 pl-2">
-              <li class="mb-1"><%= link_to t('menu.edit_account'), edit_user_registration_path, class:"dropdown-option" %></li>
-              <li class="mb-1"><%= link_to "Help", "#", class:"dropdown-option" %></li>
+              <li class="mb-1"><%= link_to t("menu.edit_account"), edit_user_registration_path, class: "dropdown-option" %></li>
+              <li class="mb-1"><%= link_to "Help", "#", class: "dropdown-option" %></li>
               <!-- Language redirects to Settings -->
               <li>
                 <%= link_to settings_path, class: "text-gray-800 hover:bg-gray-200 transition dropdown-option" do %>
-                  <%= t('menu.language') %>
+                  <%= t("menu.language") %>
                 <% end %>
               </li>
             </ul>
@@ -111,14 +111,14 @@
           <div class="text-left">
             <p class="font-bold text-base text-gray-700 mb-1">Management</p>
             <ul class="text-sm text-gray-600 space-y-2 pl-2">
-              <li><%= link_to "Posts", posts_path, class:"dropdown-option" %></li>
+              <li><%= link_to "Posts", posts_path, class: "dropdown-option" %></li>
             </ul>
           </div>
 
           <hr class="w-full border-t border-gray-300 my-2">
 
           <!-- Sign Out -->
-          <%= link_to t('menu.sign_out'), destroy_user_session_path, method: :delete, class: "sign-out-link dropdown-option" %>
+          <%= link_to t("menu.sign_out"), destroy_user_session_path, method: :delete, class: "sign-out-link dropdown-option" %>
 
         </div>
       </div>

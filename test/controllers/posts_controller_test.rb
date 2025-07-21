@@ -1,7 +1,6 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-
   include Devise::Test::IntegrationHelpers
   setup do
     @user = users(:one)
@@ -40,7 +39,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   # Uncomment the following tests when posts are implemented completely
-  
+
   # test "should update post" do
   #   patch post_url(@post.id, locale: I18n.default_locale), params: { post: { caption: @post.caption, user_id: @post.user_id } }
   #   assert_redirected_to post_url(@post.id, locale: I18n.default_locale)

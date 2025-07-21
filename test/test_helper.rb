@@ -1,10 +1,9 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-require 'database_cleaner/active_record'
+require "database_cleaner/active_record"
 
 DatabaseCleaner.strategy = :transaction
-
 
 module ActiveSupport
   class TestCase
@@ -18,7 +17,7 @@ module ActiveSupport
     setup do
       DatabaseCleaner.start
     end
-  
+
     teardown do
       DatabaseCleaner.clean
     end
@@ -27,10 +26,10 @@ end
 
 Capybara.register_driver :selenium_chrome do |app|
   options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument('--no-sandbox')
-  options.add_argument('--disable-dev-shm-usage')
-  options.add_argument('--headless') # Run in headless mode for CI
-  options.add_argument("--user-data-dir=#{ENV['CHROME_USER_DATA_DIR']}") # Use unique user data directory
+  options.add_argument("--no-sandbox")
+  options.add_argument("--disable-dev-shm-usage")
+  options.add_argument("--headless") # Run in headless mode for CI
+  options.add_argument("--user-data-dir=#{ENV["CHROME_USER_DATA_DIR"]}") # Use unique user data directory
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
