@@ -75,7 +75,7 @@ jobs:
           bundler-cache: true
 
       - name: Check code formatting
-        run: find . -name '*.rb' -print0 | bundle exec rufo --check .
+        run: find . -name '*.rb' -print0 | xargs -0 bundle exec rufo --check
 
   test:
     runs-on: ubuntu-latest
