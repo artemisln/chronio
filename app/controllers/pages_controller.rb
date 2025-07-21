@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   # Pages for navbar
-  
+
   def home
   end
 

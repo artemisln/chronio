@@ -77,7 +77,7 @@
     <!-- Comments Section -->
     <%= turbo_frame_tag dom_id(post, :comments) do %>
         <div class="w-full flex items-center gap-4">
-            <%= link_to "View #{post.comments.count} comments", post_comments_path(post, locale: I18n.locale), class: "border-2 border-stone-300 bg-blue-100 bg-opacity-80 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-blue-300 duration-150"%>
+            <%= link_to "View #{post.comments.count} comments", post_comments_path(post, locale: I18n.locale), class: "border-2 border-stone-300 bg-blue-100 bg-opacity-80 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-blue-300 duration-150" %>
             <%= link_to "Comment what you think", new_post_comment_path(post, locale: I18n.locale), class: "border-2 border-stone-300 bg-blue-100 bg-opacity-80 text-base text-black p-2 rounded-lg w-72 text-center hover:bg-blue-300 duration-150" %>
         </div>
     <% end %>

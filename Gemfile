@@ -41,7 +41,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman" , require: false
+  gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -56,7 +56,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'database_cleaner-active_record'
+  gem "database_cleaner-active_record"
 end
 
 gem "devise", "~> 4.9"
@@ -67,11 +67,14 @@ gem "tailwind_devise", "~> 0.0.3"
 gem "rails-i18n"
 
 # Icons gem
-gem 'lucide-rails'
-gem 'ostruct'
+gem "lucide-rails"
+gem "ostruct"
 
-# Amazon S3 gem for active storage 
+# Amazon S3 gem for active storage
 gem "aws-sdk-s3"
 
 # For using SASS in Rails
 gem "sassc"
+
+# For formatting the code
+gem "rufo"
