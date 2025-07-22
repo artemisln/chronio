@@ -28,7 +28,7 @@ class PostsTest < ActionDispatch::SystemTestCase
 
   test "should update post" do
     visit post_path(@post, locale: I18n.default_locale)
-    click_on "Edit", match: :first
+    click_on "Edit this post", match: :first
 
     fill_in "Title", with: "Updated title"
     page.execute_script("document.querySelector('trix-editor').editor.setSelectedRange([0, document.querySelector('trix-editor').editor.getDocument().toString().length]);")
@@ -42,7 +42,7 @@ class PostsTest < ActionDispatch::SystemTestCase
   test "should destroy post" do
     visit post_path(@post, locale: I18n.default_locale)
     accept_confirm do
-      click_on "Destroy", match: :first
+      click_on "Destroy this post", match: :first
     end
 
     assert_text "Post was successfully destroyed"

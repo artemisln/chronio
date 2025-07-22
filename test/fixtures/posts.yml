@@ -1,19 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   user: one
-#   body: "<p>This is the body of the first post.</p>"
-
-# two:
-#   user: two
-#   body: "<p>This is the body of the second post.</p>"
-
 one:
-  caption: "My First Post"
-  body: "This is the body of my first post."
   user: one
+  body: "<p>This is the body of the first post.</p>"
 
 two:
-  caption: "My Second Post"
-  body: "This is the body of my second post."
   user: two
+  body: "<p>This is the body of the second post.</p>"

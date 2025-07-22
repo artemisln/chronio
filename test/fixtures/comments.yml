@@ -1,22 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   body: MyText
-#   user: one
-#   post: one
-
-# two:
-#   body: MyText
-#   user: two
-#   post: two
-
-
 one:
-  body: "A comment on the first post"
-  user: two       
-  post: one      
+  body: MyText
+  user: one
+  post: one
 
 two:
-  body: "Another comment"
-  user: one       
-  post: one       
+  body: MyText
+  user: two
+  post: two
