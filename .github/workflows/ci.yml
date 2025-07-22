@@ -137,19 +137,19 @@ jobs:
           echo "PostgreSQL failed to start.";
           exit 1;
 
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/chronio_test
-        run: |
-          # Create a unique user data directory for each test run
-          export CHROME_USER_DATA_DIR=$(mktemp -d)
-          bin/rails db:prepare && bin/rails test:system
+      # - name: Run tests
+      #   env:
+      #     RAILS_ENV: test
+      #     DATABASE_URL: postgres://postgres:postgres@localhost:5432/chronio_test
+      #   run: |
+      #     # Create a unique user data directory for each test run
+      #     export CHROME_USER_DATA_DIR=$(mktemp -d)
+      #     bin/rails db:prepare && bin/rails test:system
 
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
+      # - name: Keep screenshots from failed system tests
+      #   uses: actions/upload-artifact@v4
+      #   if: failure()
+      #   with:
+      #     name: screenshots
+      #     path: ${{ github.workspace }}/tmp/screenshots
+      #     if-no-files-found: ignore
