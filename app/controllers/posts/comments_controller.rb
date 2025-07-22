@@ -3,10 +3,17 @@ module Posts
     def new; end
 
     def create
-      @comment = @post.comments.new
+      @comment = @post.comments.new(comment_params)
       @comment.user = current_user
-      @comment.update(comment_params)
-      redirect_to root_path
+
+      respond_to do |format|
+        if @comment.save
+          format.turbo_stream
+        else
+          # Redirect back with an alert if the comment fails to save
+          format.html { redirect_to post_path(@post), alert: "Comment could not be created." }
+        end
+      end
     end
 
     def index; end
