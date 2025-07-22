@@ -2,16 +2,16 @@
   <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)] pointer-events-none"></div>  
     <div class="mx-auto md:w-2/3 w-full flex">
       <div class="mx-auto">
-        # <% if notice.present? %>
-        #   <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-        # <% end %>
+        <% if notice.present? %>
+          <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+        <% end %>
 
         <%= render @post %>
 
         <%= link_to "Edit this post", edit_post_path(@post, locale: I18n.default_locale), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
         <%= link_to "Back to posts", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
         <div class="inline-block ml-2">
-          <%= button_to "Destroy this post", @post, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+          <%= button_to "Destroy this post", @post, method: :delete, data: { confirm: "Are you sure?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
         </div>
       </div>
     </div>
