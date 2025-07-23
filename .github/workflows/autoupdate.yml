@@ -1,0 +1,46 @@
+name: Update Ruby Dependencies
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight
+  workflow_dispatch:
+
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.5' # Specify your Ruby version here
+          bundler-cache: true # Caches gems for faster builds
+
+      - name: Update dependencies
+        run: bundle update
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          if git diff --exit-code Gemfile.lock; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Gemfile.lock
+          git commit -m "chore: update Gemfile.lock dependencies"
+          git push
