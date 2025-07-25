@@ -327,6 +327,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shadcn-ui (0.0.15)
+      tailwind_merge (~> 0.12)
+    sin_lru_redux (2.5.2)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
@@ -340,6 +343,8 @@ GEM
     stringio (3.1.7)
     tailwind_devise (0.0.3)
       rails (>= 6.0)
+    tailwind_merge (0.16.0)
+      sin_lru_redux (~> 2.5)
     tailwindcss-rails (4.3.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
@@ -416,6 +421,7 @@ DEPENDENCIES
   rufo
   sassc
   selenium-webdriver
+  shadcn-ui
   sprockets-rails
   stimulus-rails
   tailwind_devise (~> 0.0.3)

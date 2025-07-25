@@ -78,3 +78,6 @@ gem "sassc"
 
 # For formatting the code
 gem "rufo"
+
+# For using Shadcn components
+gem "shadcn-ui"

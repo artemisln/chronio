@@ -1,8 +1,10 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const shadcnConfig = require('./shadcn.tailwind.js');
 
 module.exports = {
   mode: 'jit',
   content: [
+    ...shadcnConfig.content,
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
@@ -11,19 +13,20 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/components/**/*.erb',
-    './node_modules/flowbite/**/*.js'
   ],
   theme: {
+    ...shadcnConfig.theme,
     extend: {
+      ...shadcnConfig.theme.extend,
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
     },
   },
   plugins: [
+    ...shadcnConfig.plugins,
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-    require('flowbite/plugin')
   ]
 }
