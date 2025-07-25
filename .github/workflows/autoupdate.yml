@@ -5,7 +5,6 @@ on:
     - cron: '0 0 * * *' # Run daily at midnight
   workflow_dispatch:
 
-
 jobs:
   update-dependencies:
     runs-on: ubuntu-latest
@@ -21,11 +20,13 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.5' # Specify your Ruby version here
-          bundler-cache: true # Caches gems for faster builds
+          ruby-version: '3.3.5'
+          bundler-cache: true
 
       - name: Update dependencies
-        run: bundle update
+        run: |
+          bundle config set frozen false
+          bundle update
 
       - name: Check for changes
         id: git-check
