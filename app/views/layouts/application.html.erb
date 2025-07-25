@@ -6,6 +6,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
 
     <%= yield :head %>
 
@@ -14,22 +18,21 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application.tailwind', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
 
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
-  <body class="d-flex flex-column min-vh-100 font-sans">
+  <%# Replace Bootstrap-style classes with Tailwind and add a background %>
+  <body class="flex flex-col h-screen font-sans bg-white dark:bg-black">
     <!-- Navbar -->
     <%= render "layouts/navbar" if current_user %>
     <%= render "layouts/alerts" %>
 
     <!-- Main content -->
-    <main class="flex-grow-1">
+    <main class="flex-grow">
       <%= yield %>
     </main>
 

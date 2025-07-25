@@ -1,46 +1,58 @@
-<div class="w-full bg-slate-900 h-16 sticky top-0 z-[999] px-4">
-  <div class="max-w-7xl w-full h-full mx-auto flex items-center justify-between">
-    <!-- Search -->
-    <div class="relative search-container" data-controller="toggle-search" data-toggle-search-target="searchContainer">
-      <div class="flex flex-col items-center cursor-pointer p-2" data-action="click->toggle-search#toggle">
-        <%= lucide_icon("search", class: "search-icon text-gray-100") %>
-        <span class="text-sm text-gray-100 mt-1 search-label"><%= t("menu.search") %></span>
+<div class="w-full bg-white dark:bg-slate-900 h-14 sticky top-0 z-[999] px-4 border-b border-gray-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-full">
+    <div class="flex items-center gap-4">
+      <div class="relative flex items-center">
+        <%= lucide_icon("search", class: "absolute left-3 w-4 h-4 text-gray-500 dark:text-gray-400") %>
+        <%= render_input name: "q",
+                         type: :search,
+                         placeholder: t("menu.search"),
+                         class: "rounded-md w-72 h-9 bg-slate-100 dark:bg-slate-800 border-transparent text-sm text-gray-900 dark:text-gray-200 pl-9 focus:ring-0 focus:bg-white dark:focus:bg-slate-700 focus:outline-none",
+                         variant: :borderless %>
       </div>
-      <%= render_input name: "q", placeholder: t("menu.search"), class: "search-input" %>
     </div>
 
-    <!-- Navigation Links -->
-    <%= link_to root_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 p-2 rounded-md hover:bg-slate-800 transition-colors #{'bg-slate-800 font-semibold' if current_page?(root_path(locale: I18n.locale))}" do %>
-      <%= lucide_icon("home", class: "mb-1") %>
-      <span class="text-sm"><%= t("menu.home") %></span>
-    <% end %>
+    <!-- Right Section: Navigation Links & Profile Dropdown -->
+    <div class="flex items-center h-full gap-2">
+      <%# Define base and active classes for nav links to keep the code DRY %>
+      <% nav_link_class = "flex flex-col items-center justify-center h-full px-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" %>
+      <% active_link_class = "text-slate-900 dark:text-white border-b-2 border-slate-900 dark:border-white" %>
 
-    <%= link_to network_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 p-2 rounded-md hover:bg-slate-800 transition-colors #{'bg-slate-800 font-semibold' if current_page?(network_path(locale: I18n.locale))}" do %>
-      <%= lucide_icon("users", class: "mb-1") %>
-      <span class="text-sm"><%= t("menu.network") %></span>
-    <% end %>
+      <%= link_to root_path(locale: I18n.locale), class: "#{nav_link_class} #{active_link_class if current_page?(root_path(locale: I18n.locale))}" do %>
+        <%= lucide_icon("home", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
+        <span class="text-xs hidden md:block"><%= t("menu.home") %></span>
+      <% end %>
 
-    <%= link_to jobs_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 p-2 rounded-md hover:bg-slate-800 transition-colors #{'bg-slate-800 font-semibold' if current_page?(jobs_path(locale: I18n.locale))}" do %>
-      <%= lucide_icon("briefcase-business", class: "mb-1") %>
-      <span class="text-sm"><%= t("menu.jobs") %></span>
-    <% end %>
+      <%= link_to network_path(locale: I18n.locale), class: "#{nav_link_class} #{active_link_class if current_page?(network_path(locale: I18n.locale))}" do %>
+        <%= lucide_icon("users", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
+        <span class="text-xs hidden md:block"><%= t("menu.network") %></span>
+      <% end %>
 
-    <%= link_to messages_path(locale: I18n.locale), class: "flex flex-col items-center text-gray-100 p-2 rounded-md hover:bg-slate-800 transition-colors #{'bg-slate-800 font-semibold' if current_page?(messages_path(locale: I18n.locale))}" do %>
-      <%= lucide_icon("message-square", class: "mb-1") %>
-      <span class="text-sm"><%= t("menu.messages") %></span>
-    <% end %>
+      <%= link_to jobs_path(locale: I18n.locale), class: "#{nav_link_class} #{active_link_class if current_page?(jobs_path(locale: I18n.locale))}" do %>
+        <%= lucide_icon("briefcase-business", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
+        <span class="text-xs hidden md:block"><%= t("menu.jobs") %></span>
+      <% end %>
 
-    <!-- Profile Dropdown -->
-    <% if current_user %>
+      <%= link_to messages_path(locale: I18n.locale), class: "#{nav_link_class} #{active_link_class if current_page?(messages_path(locale: I18n.locale))}" do %>
+        <%= lucide_icon("message-square", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
+        <span class="text-xs hidden md:block"><%= t("menu.messages") %></span>
+      <% end %>
+      
+      <%# Notifications Link - You can add a path here when you build it %>
+      <%= link_to "#", class: "#{nav_link_class}" do %>
+        <%= lucide_icon("bell", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
+        <span class="text-xs hidden md:block">Notifications</span>
+      <% end %>
+
+      <!-- Profile Dropdown -->
       <%= render_dropdown_menu do %>
         <% dropdown_menu_trigger do %>
-          <%= render_button variant: :ghost, class: "flex-col h-auto p-2 text-gray-100 hover:bg-slate-800 hover:text-white" do %>
-            <%= lucide_icon("user", class: "mb-1") %>
-            <span class="text-sm flex items-center gap-1">
+          <button class="<%= nav_link_class %>">
+            <%= lucide_icon("circle-user", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
+            <span class="text-xs hidden md:block flex items-center gap-1">
               <%= t("menu.profile") %>
-              <%= lucide_icon("chevron-down", class: "w-3 h-3") %>
+              <%= lucide_icon("chevron-down", class: "w-3 h-3 text-slate-600 dark:text-slate-400") %>
             </span>
-          <% end %>
+          </button>
         <% end %>
 
         <% dropdown_menu_content do %>
@@ -48,34 +60,18 @@
             <%= lucide_icon("circle-user-round", class: "mr-2 text-2xl text-slate-700") %>
             <span class="font-semibold text-slate-900"><%= current_user.username %></span>
           </div>
-
           <%= render_separator class: "my-1" %>
-
           <%= dropdown_menu_label "Account" %>
-          <%= dropdown_menu_item do %>
-             <%= link_to t("menu.edit_account"), edit_user_registration_path, class: "w-full" %>
-          <% end %>
-          <%= dropdown_menu_item do %>
-            <%= link_to "Help", "#", class: "w-full" %>
-          <% end %>
-          <%= dropdown_menu_item do %>
-            <%= link_to t("menu.language"), settings_path, class: "w-full" %>
-          <% end %>
-
+          <%= dropdown_menu_item { link_to t("menu.edit_account"), edit_user_registration_path, class: "w-full" } %>
+          <%= dropdown_menu_item { link_to "Help", "#", class: "w-full" } %>
+          <%= dropdown_menu_item { link_to t("menu.language"), settings_path, class: "w-full" } %>
           <%= render_separator class: "my-1" %>
-
           <%= dropdown_menu_label "Management" %>
-          <%= dropdown_menu_item do %>
-            <%= link_to "Posts", posts_path, class: "w-full" %>
-          <% end %>
-
+          <%= dropdown_menu_item { link_to "Posts", posts_path, class: "w-full" } %>
           <%= render_separator class: "my-1" %>
-
-          <%= dropdown_menu_item do %>
-            <%= button_to t("menu.sign_out"), destroy_user_session_path, method: :delete, class: "w-full text-left hover:text-red-700" %>
-          <% end %>
+          <%= dropdown_menu_item { button_to t("menu.sign_out"), destroy_user_session_path, method: :delete, class: "w-full text-left text-red-600 dark:text-red-500 hover:text-red-700" } %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

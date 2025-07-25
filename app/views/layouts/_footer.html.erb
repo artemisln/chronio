@@ -1,13 +1,10 @@
-<footer style="position: relative; bottom: 0; width: 100%; background-color: #eee; padding: 20px;">
-    <div class="container-fluid">
-        <div class="row justify-content-around">
-
-            <!-- Company Section -->
-
-            <div class="col-md-2">
-                <%= link_to t("footer.about"), pages_about_path(locale: I18n.locale), class: "d-block mb-1 text-sm" %>
-                <p class="d-block mb-1 text-sm">Απόρρητο και Όροι</p>
-            </div>
-        </div>
+<footer class="w-full bg-gray-100 dark:bg-slate-900 p-5 text-center border-t border-gray-200 dark:border-t-slate-800 transition-colors duration-300">
+  <div class="container-fluid">
+    <div class="flex justify-center items-center gap-6">
+      <!-- Company Section -->
+      <%= link_to t("footer.about"), pages_about_path(locale: I18n.locale), class: "text-sm text-slate-600 dark:text-slate-400 hover:underline" %>
+      <a href="#" class="text-sm text-slate-600 dark:text-slate-400 hover:underline">Privacy & Terms</a>
     </div>
+    <p class="text-xs text-slate-500 dark:text-slate-500 mt-4">© <%= Time.now.year %> Chronio, Inc. All rights reserved.</p>
+  </div>
 </footer>
