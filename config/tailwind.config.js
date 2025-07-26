@@ -6,27 +6,21 @@ module.exports = {
   content: [
     ...shadcnConfig.content,
     './public/*.html',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}',
-    './app/views/**/*.html.erb',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/components/**/*.erb',
+    './app/components/**/*.erb', 
+  ],
+  safelist: [
+    'h-[60px]',
+    'rounded-full',
   ],
   theme: {
     ...shadcnConfig.theme,
     extend: {
       ...shadcnConfig.theme.extend,
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
     },
   },
   plugins: [
     ...shadcnConfig.plugins,
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
   ]
 }
