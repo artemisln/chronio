@@ -31,9 +31,9 @@
     <%= render "layouts/navbar" if current_user %>
     <%= render "layouts/alerts" %>
 
-    <!-- Main content -->
+    <%# Main content area, flex-grow allows it to take up remaining space %>
     <main class="flex-grow">
-      <%= yield %>
+       <%= yield %>
     </main>
 
     <!-- Footer -->

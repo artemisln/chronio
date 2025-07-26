@@ -1,4 +1,4 @@
-<div class="w-full bg-white dark:bg-slate-900 h-14 sticky top-0 z-[999] px-4 border-b border-gray-200 dark:border-slate-800 transition-colors duration-300">
+<div class="w-full h-[60px] bg-white dark:bg-slate-900 sticky top-0 z-[999] px-4 border-b border-gray-200 dark:border-slate-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto flex items-center justify-between h-full">
     <div class="flex items-center gap-4">
       <div class="relative flex items-center">
@@ -6,8 +6,8 @@
         <%= render_input name: "q",
                          type: :search,
                          placeholder: t("menu.search"),
-                         class: "rounded-md w-72 h-9 bg-slate-100 dark:bg-slate-800 border-transparent text-sm text-gray-900 dark:text-gray-200 pl-9 focus:ring-0 focus:bg-white dark:focus:bg-slate-700 focus:outline-none",
-                         variant: :borderless %>
+                         class: "w-72 h-9 bg-slate-100 dark:bg-slate-800 border-gray-300 dark:border-slate-600 text-sm text-gray-900 dark:text-gray-200 pl-9 focus:ring-0 focus:bg-white dark:focus:bg-slate-700 focus:outline-none rounded-full" %>
+                         
       </div>
     </div>
 
@@ -40,7 +40,7 @@
       <%# Notifications Link - You can add a path here when you build it %>
       <%= link_to "#", class: "#{nav_link_class}" do %>
         <%= lucide_icon("bell", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
-        <span class="text-xs hidden md:block">Notifications</span>
+        <span class="text-xs hidden md:block"><%= t("menu.notifications") %></span>
       <% end %>
 
       <!-- Profile Dropdown -->
@@ -48,7 +48,7 @@
         <% dropdown_menu_trigger do %>
           <button class="<%= nav_link_class %>">
             <%= lucide_icon("circle-user", class: "w-6 h-6 text-slate-600 dark:text-slate-400") %>
-            <span class="text-xs hidden md:block flex items-center gap-1">
+            <span class="text-xs flex items-center gap-1">
               <%= t("menu.profile") %>
               <%= lucide_icon("chevron-down", class: "w-3 h-3 text-slate-600 dark:text-slate-400") %>
             </span>
