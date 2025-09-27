@@ -420,7 +420,7 @@ DEPENDENCIES
   jbuilder
   lucide-rails
   ostruct
-  pg (~> 1.5)
+  pg (~> 1.6)
   puma (>= 5.0)
   rails
   rails-i18n
