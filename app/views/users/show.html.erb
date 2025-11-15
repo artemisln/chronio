@@ -1,0 +1,26 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-3xl font-bold mb-4"><%= @user.username %></h1>
+    <p class="text-gray-600 mb-4">Email: <%= @user.email %></p>
+
+    <!-- Followers and Following counts -->
+    <div class="mb-4">
+      <span class="font-semibold">Followers: <%= @user.followers.count %></span> |
+      <span class="font-semibold">Following: <%= @user.following.count %></span>
+    </div>
+
+    <!-- Follow/Unfollow button (only show if not the current user) -->
+    <% if current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= button_to "Unfollow", unfollow_user_path(@user), method: :delete, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
+      <% else %>
+        <%= button_to "Follow", follow_user_path(@user), method: :post, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+      <% end %>
+    <% end %>
+
+    <!-- Placeholder for user's posts or other content -->
+    <h2 class="text-2xl font-semibold mt-6 mb-4">Posts</h2>
+    <% # Add logic to display @user.posts if needed %>
+    <p>No posts yet.</p>
+  </div>
+</div>

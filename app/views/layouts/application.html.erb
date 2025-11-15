@@ -18,20 +18,20 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_link_tag 'application.tailwind', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbo-track': "reload" %>
+    <%= stylesheet_link_tag "application.tailwind", media: "all", 'data-turbo-track': "reload" %>
     <%= javascript_importmap_tags %>
 
-    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= favicon_link_tag asset_path("favicon.ico") %>
   </head>
 
-  <%# Replace Bootstrap-style classes with Tailwind and add a background %>
+  <% # Replace Bootstrap-style classes with Tailwind and add a background %>
   <body class="flex flex-col h-screen font-sans bg-white dark:bg-black">
     <!-- Navbar -->
-    <%= render "layouts/navbar" if current_user %>
+    <%= render "layouts/navbar" %>
     <%= render "layouts/alerts" %>
 
-    <%# Main content area, flex-grow allows it to take up remaining space %>
+    <% # Main content area, flex-grow allows it to take up remaining space %>
     <main class="flex-grow">
        <%= yield %>
     </main>
