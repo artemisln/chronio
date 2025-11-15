@@ -12,6 +12,13 @@ Rails.application.routes.draw do
 
     devise_for :users
 
+    resources :users, only: [:show] do
+      member do
+        post 'follow'
+        delete 'unfollow'
+      end
+    end
+
     resources :jobs
     get "pages/home", to: "pages#home", as: :pages_home
     get "pages/about", to: "pages#about", as: :pages_about
