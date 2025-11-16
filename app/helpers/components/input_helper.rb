@@ -26,7 +26,7 @@ module Components::InputHelper
       name:,
       value:,
       id:,
-      options: options,
+      options: options
     }
   end
 end

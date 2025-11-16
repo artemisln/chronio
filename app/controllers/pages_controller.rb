@@ -9,9 +9,9 @@ class PagesController < ApplicationController
     # show all users (exclude current user when signed in)
     @users = if user_signed_in?
         User.where.not(id: current_user.id).order(:created_at)
-      else
+    else
         User.order(:created_at)
-      end
+    end
   end
 
   def jobs
