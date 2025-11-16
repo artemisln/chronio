@@ -42,29 +42,50 @@ Ensure you have **Ruby** and **Rails** installed on your system.
    cd chronio
    ```
 
-2. **Install dependencies**
+2. **Configure your Ruby environment (Important!)**
 
-    Make sure all necessary gems are installed by running:
-    ```bash
-    bundle install
-    ```
+   If you are not using a Ruby version manager like `rbenv` or `rvm`, you might encounter a permission error when installing gems (`Gem::FilePermissionError`). This happens because the system's default Ruby tries to install gems in a protected directory.
 
-3. **Set up the database**
-    Run the following commands to create and migrate the database:
-    ```bash
-    rails db:create
-    rails db:migrate
-    ```
+   To fix this, you can configure your system to install gems into your home directory. Run these commands:
 
-4. **Start the server**
-    Use the following command to start the development server:
-    ```bash
-    bin/dev
-    ```
+   ```bash
+   # For Bash users (default on many Linux systems)
+   echo 'export GEM_HOME="$HOME/.gems"' >> ~/.bashrc
+   echo 'export PATH="$HOME/.gems/bin:$PATH"' >> ~/.bashrc
+   source ~/.bashrc
+   ```
 
-5. **Access your app**
+   > **Note**: If you use a different shell like Zsh, replace `~/.bashrc` with `~/.zshrc`. After running the commands, you may need to restart your terminal.
+
+   Next, install the `bundler` gem into this new location:
+   ```bash
+   gem install bundler
+   ```
+
+3. **Install dependencies**
+
+Make sure all necessary gems are installed by running:
+```bash
+bundle install
+```
+
+4. **Set up the database**
+Run the following commands to create and migrate your database:
+```bash
+rails db:create
+rails db:migrate
+rails db:seed # (optional, to populate with sample data)
+```
+
+5. **Start the server**
+Use the following command to start the development server:
+```bash
+bin/dev
+```
+
+6. **Access your app**
     Open your web browser and go to http://localhost:3000 to see Chronio in action! 🎉
-
+ 
 ---
 
 ## 📝 Usage

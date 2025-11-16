@@ -1,0 +1,24 @@
+<div class="bg-white dark:bg-slate-800 rounded-lg shadow-md dark:shadow-lg w-full h-[250px] p-4 flex flex-col items-center justify-center transition hover:scale-105">
+  <% # In a future step, you can replace this with a profile picture %>
+  <div class="w-24 h-24 rounded-full bg-slate-200 dark:bg-slate-700 mx-auto mb-4 flex items-center justify-center">
+    <%= lucide_icon("user", class: "w-12 h-12 text-slate-500 dark:text-slate-300") %>
+  </div>
+  <h3 class="text-lg font-semibold text-slate-900 dark:text-white"><%= user.name %></h3>
+  <p class="text-sm text-slate-500 dark:text-slate-400">@<%= user.username %></p>
+
+  <!-- Followers and Following counts -->
+  <div class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+    Followers: <%= user.followers.count %> | Following: <%= user.following.count %>
+  </div>
+
+  <!-- Follow/Unfollow button (only show if not the current user) -->
+  <% if current_user && current_user != user %>
+    <% if current_user.following?(user) %>
+      <%= button_to "Unfollow", unfollow_user_path(user, locale: I18n.locale), method: :delete, class: "bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 cursor-pointer" %>
+    <% else %>
+      <%= button_to "Follow", follow_user_path(user, locale: I18n.locale), method: :post, class: "bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 cursor-pointer" %>
+    <% end %>
+  <% end %>
+
+  <% # You can add a "View Profile" link here later %>
+</div>
