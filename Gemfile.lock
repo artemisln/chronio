@@ -329,7 +329,7 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (3.2.2)
-    rufo (0.18.1)
+    rufo (0.18.2)
     sassc (2.4.0)
       ffi (~> 1.9)
     securerandom (0.4.1)
