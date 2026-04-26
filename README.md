@@ -35,6 +35,12 @@ Ensure you have **Ruby** and **Rails** installed on your system.
 
 ### Setup
 
+Choose one of the two setup methods below:
+
+#### Option A: Nix Flake (Recommended for Nix users)
+
+If you have Nix with flakes enabled, the easiest way to set up the development environment:
+
 1. **Clone the repository**
 
    ```bash
@@ -42,7 +48,51 @@ Ensure you have **Ruby** and **Rails** installed on your system.
    cd chronio
    ```
 
-2. **Configure your Ruby environment (Important!)**
+2. **Enter the development shell**
+
+   ```bash
+   nix develop
+   ```
+
+   This will automatically provide Ruby 3.3, PostgreSQL, Node.js, Yarn, ImageMagick, and all other dependencies.
+
+3. **Install dependencies**
+
+   ```bash
+   bundle install
+   ```
+
+4. **Set up the database**
+
+   ```bash
+   rails db:create
+   rails db:migrate
+   rails db:seed # (optional)
+   ```
+
+4. **Start the server**
+
+   ```bash
+   bin/dev
+   ```
+
+#### Option B: Manual Setup
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/artemisln/chronio.git
+   cd chronio
+   ```
+
+2. **Install Prerequisites**
+
+   - **Ruby 3.3.5** (use rbenv, rvm, or asdf)
+   - **PostgreSQL 16** - Required for the `pg` gem
+   - **Node.js 22** and **Yarn** - For Tailwind CSS
+   - **ImageMagick** and **libvips** - For Active Storage image processing
+
+3. **Configure your Ruby environment (Important!)**
 
    If you are not using a Ruby version manager like `rbenv` or `rvm`, you might encounter a permission error when installing gems (`Gem::FilePermissionError`). This happens because the system's default Ruby tries to install gems in a protected directory.
 
@@ -62,29 +112,29 @@ Ensure you have **Ruby** and **Rails** installed on your system.
    gem install bundler
    ```
 
-3. **Install dependencies**
+4. **Install dependencies**
 
-Make sure all necessary gems are installed by running:
-```bash
-bundle install
-```
+   Make sure all necessary gems are installed by running:
+   ```bash
+   bundle install
+   ```
 
-4. **Set up the database**
-Run the following commands to create and migrate your database:
-```bash
-rails db:create
-rails db:migrate
-rails db:seed # (optional, to populate with sample data)
-```
+5. **Set up the database**
+   Run the following commands to create and migrate your database:
+   ```bash
+   rails db:create
+   rails db:migrate
+   rails db:seed # (optional, to populate with sample data)
+   ```
 
-5. **Start the server**
-Use the following command to start the development server:
-```bash
-bin/dev
-```
+6. **Start the server**
+   Use the following command to start the development server:
+   ```bash
+   bin/dev
+   ```
 
-6. **Access your app**
-    Open your web browser and go to http://localhost:3000 to see Chronio in action! 🎉
+7. **Access your app**
+     Open your web browser and go to http://localhost:3000 to see Chronio in action! 🎉
  
 ---
 
