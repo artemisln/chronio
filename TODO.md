@@ -51,9 +51,18 @@
 
 ## Pending Tasks
 
-### High Priority
+### High Priority (Production-Critical)
 
-#### 1. Feed Should Show Only Followed Users' Posts
+#### 1. Production Infrastructure
+- [ ] Configure production SMTP (SendGrid/Postmark/AWS SES)
+- [ ] Add rate limiting (Rack::Attack or Rack::Limiter)
+- [ ] Set up error monitoring (Sentry)
+- [ ] Add structured logging (Lograge)
+- [ ] Create health check endpoint
+- [ ] Background jobs setup (Sidekiq + Redis)
+- [ ] Database indexing for feed queries
+
+#### 2. Feed Should Show Only Followed Users' Posts
 **Location:** `app/controllers/feed_controller.rb:3`
 **Issue:** Currently shows all posts. Should filter to only show posts from followed users.
 ```ruby
@@ -64,79 +73,124 @@
 @posts = Post.where(user: current_user.following).or(Post.where(user: current_user)).order(created_at: :desc)
 ```
 
-#### 2. Add User Profile Pictures (Avatar)
+#### 3. Add User Profile Pictures (Avatar)
 **Reference:** README.md mentions "Coming Soon: Profile pictures"
 - Add `avatar` attachment to User model
 - Update user views to display avatar
 - Add avatar upload to Devise registration/edit forms
 
-#### 3. Fix Reaction Model
+#### 4. Pagination (Scalability)
+- Add pagination to feed (will_paginate or Pagy)
+- Add pagination to user posts
+- Add pagination to comments
+
+### High Priority (Core Features)
+
+#### 5. Fix Reaction Model
 **Location:** `app/models/reaction.rb` (needs verification)
 **Issue:** Need to verify reactions properly enforce unique user+post constraint
 - One reaction per user per post
 - Should only allow valid reaction types
 
-#### 4. Add Tests for Follow System
+#### 6. Add Tests for Follow System
 **Location:** `test/models/`
 - No tests for Follow model
 - No tests for User#follow, User#unfollow, User#following? methods
 
-#### 5. Fix Feed Controller Tests
+#### 7. Fix Feed Controller Tests
 **Location:** `test/controllers/feed_controller_test.rb`
 - Verify authenticated users see feed
 - Verify unauthenticated users are redirected
-
-### Medium Priority
-
-#### 6. Add User Profile Page Improvements
-**Location:** `app/views/users/show.html.erb`
-- Show user's posts
-- Show follower/following counts
-- Add follow/unfollow button (for other users)
-- Add edit profile button (for own profile)
-
-#### 7. Optimize Image Processing
-**Location:** `app/models/post.rb`
-- Add image size validation
-- Add image content type validation
-- Consider adding thumbnail generation
 
 #### 8. Add Model Validations
 - Post: presence validation on body (if required)
 - Comment: presence validation on body
 - Job: presence validation on name, description, location
 
-#### 9. Add More System Tests
+### Medium Priority (Engagement Features)
+
+#### 9. Real-time Chat
+- ActionCable WebSocket setup
+- Direct messages between users
+- Redis for production broadcasting
+- Chat UI with Turbo/Stimulus
+- Online status indicators
+
+#### 10. Video Support
+- Add video upload to posts
+- Video transcoding (FFmpeg/ActiveEncode)
+- Video player component
+- Thumbnail generation
+- Size/content type validations
+
+#### 11. Groups Feature
+- Create/edit/join groups
+- Group posts (only members can post)
+- Group member management
+- Group privacy settings (public/private)
+- Group admin roles
+
+#### 12. Stories (24hr Ephemeral Content)
+- Create story (image/video)
+- View stories (fullscreen)
+- Auto-expire after 24 hours
+- Story replies (private)
+- Story views count
+
+#### 13. Notifications System
+- Notify on new followers
+- Notify on new comments
+- Notify on new reactions
+- Notify on new DMs
+- In-app notification center
+- Email notifications option
+
+#### 14. Add User Profile Page Improvements
+**Location:** `app/views/users/show.html.erb`
+- Show user's posts
+- Show follower/following counts
+- Add follow/unfollow button (for other users)
+- Add edit profile button (for own profile)
+
+#### 15. Optimize Image Processing
+**Location:** `app/models/post.rb`
+- Add image size validation
+- Add image content type validation
+- Thumbnail generation
+
+#### 16. Search Functionality
+- Search users by username
+- Search posts by content
+
+### Medium Priority (Testing)
+
+#### 17. Add More System Tests
 - User registration flow
 - Follow/unfollow flow
 - Comment creation flow
 
-#### 10. Locale Improvements
+#### 18. Locale Improvements
 - Verify all locales (en, es, gr, fr) are complete
 - Add missing translations
 
-### Low Priority
+### Low Priority (Polish)
 
-#### 11. Real-time Chat (Coming Soon from README)
-- Requires WebSocket setup (ActionCable)
-- Could use Redis for production
+#### 19. Caching Strategies
+- Fragment caching for feeds
+- HTTP caching headers
+- Redis cache store for production
 
-#### 12. Search Functionality
-- Search users
-- Search posts
+#### 20. Admin Moderation Tools
+- Content flagging system
+- User reporting
+- User banning
+- Admin dashboard
 
-#### 13. Notifications System
-- Notify users on new followers
-- Notify users on new comments
-- Notify users on new reactions
-
-#### 14. Direct Messages
-- From README: "chat requests to connect in real time"
-
-#### 15. Performance Optimization
-- Add pagination to feed
-- Add pagination to user posts
-- Consider caching strategies
+#### 21. SEO Optimization
+- Open Graph tags
+- Twitter Card tags
+- Sitemap generation
+- Schema.org markup
 
 ---
 
