@@ -59,7 +59,7 @@ group :test do
   gem "database_cleaner-active_record"
 end
 
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 
 gem "tailwind_devise", "~> 0.0.3"
 
