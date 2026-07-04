@@ -8,12 +8,12 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field mb-4">
               <%= f.label :email, class: "mb-2 text-lg" %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full border-2 focus:ring-0 rounded-lg bg-gray-50" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full border-2 focus:ring-0 rounded-lg bg-gray-50 py-3 px-4 text-lg" %>
             </div>
 
             <div class="field mb-4 border-[#A020F0]">
               <%= f.label :password, "Password", class: "mb-2 text-lg" %><br />
-              <%= f.password_field :password, autocomplete: "current-password", class: "w-full border-2 focus:ring-0 rounded-lg bg-gray-50" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-full border-2 focus:ring-0 rounded-lg bg-gray-50 py-3 px-4 text-lg" %>
             </div>
             
             <% if devise_mapping.rememberable? %>

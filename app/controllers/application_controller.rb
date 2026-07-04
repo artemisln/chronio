@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :avatar])
+  end
+
+  def default_url_options
+    return {} if I18n.locale == I18n.default_locale
+    { locale: I18n.locale }
   end
 
   def set_locale

@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :jobs, dependent: :destroy
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 
   # New associations for following functionality
   has_many :follows, foreign_key: :follower_id, dependent: :destroy

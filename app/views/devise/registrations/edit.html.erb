@@ -18,6 +18,16 @@
               <%= f.text_field :username, class: "w-full rounded-lg bg-gray-50" %>
             </div>
 
+            <div class="field mb-4">
+              <%= f.label :avatar %><br />
+              <% if resource.avatar.attached? %>
+                <div class="mb-2">
+                  <%= image_tag resource.avatar.variant(:thumb), class: "w-16 h-16 rounded-full object-cover" %>
+                </div>
+              <% end %>
+              <%= f.file_field :avatar, class: "w-full rounded-lg bg-gray-50", accept: "image/*" %>
+            </div>
+
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>

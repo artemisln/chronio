@@ -75,9 +75,9 @@
 
 #### 3. Add User Profile Pictures (Avatar)
 **Reference:** README.md mentions "Coming Soon: Profile pictures"
-- Add `avatar` attachment to User model
-- Update user views to display avatar
-- Add avatar upload to Devise registration/edit forms
+- [x] Add `avatar` attachment to User model
+- [x] Update user views to display avatar
+- [x] Add avatar upload to Devise registration/edit forms
 
 #### 4. Pagination (Scalability)
 - Add pagination to feed (will_paginate or Pagy)

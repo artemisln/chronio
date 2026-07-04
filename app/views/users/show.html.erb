@@ -1,7 +1,18 @@
 <div class="container mx-auto px-4 py-8">
   <div class="bg-white shadow-md rounded-lg p-6">
-    <h1 class="text-3xl font-bold mb-4"><%= @user.username %></h1>
-    <p class="text-gray-600 mb-4">Email: <%= @user.email %></p>
+    <div class="flex items-center gap-4 mb-4">
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(:thumb), class: "w-20 h-20 rounded-full object-cover" %>
+      <% else %>
+        <div class="w-20 h-20 rounded-full bg-slate-200 flex items-center justify-center">
+          <%= lucide_icon("user", class: "w-10 h-10 text-slate-500") %>
+        </div>
+      <% end %>
+      <div>
+        <h1 class="text-3xl font-bold"><%= @user.username %></h1>
+        <p class="text-gray-600">Email: <%= @user.email %></p>
+      </div>
+    </div>
 
     <!-- Followers and Following counts -->
     <div class="mb-4">
